@@ -27,7 +27,7 @@ const Navbar = () => {
         <li><Link to="/dashboard">Dashboard</Link></li>
       </ul>
     </div>
-    <a className="btn btn-ghost normal-case text-xl"><img src={logo} alt="" className='lg:h-16 lg:w-16 h-6 mr-2'/> <Link to="/">PowerToy</Link></a>
+    <a className="btn btn-ghost normal-case text-xl"><img src={logo} alt="" className='lg:h-16 lg:w-16 h-6 mr-2'/> <Link to="/">Sports Shala</Link></a>
   </div>
   <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal px-1">

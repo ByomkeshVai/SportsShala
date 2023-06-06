@@ -3,8 +3,8 @@ import Navbar from './shared/Navbar';
 
 const Home = () => {
     return (
-        <div className='my-container'>
-            <Navbar></Navbar>
+        <div >
+            
             
         </div>
     );
