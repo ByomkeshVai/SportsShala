@@ -13,7 +13,7 @@ const Navbar = () => {
     }
     
     return (
-        <>
+        <div className='max-w-screen-xl mx-auto'>
             <div className="navbar mb-4">
   <div className="navbar-start">
     <div className="dropdown">
@@ -59,7 +59,7 @@ const Navbar = () => {
 
   </div>
 </div>
-        </>
+        </div>
     );
 };
 
