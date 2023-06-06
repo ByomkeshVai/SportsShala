@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import { saveUser } from '../../../api/auth';
+import { Helmet } from 'react-helmet';
+import { TbFidgetSpinner } from 'react-icons/tb'
 
 const Signup = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
@@ -27,6 +29,9 @@ const Signup = () => {
 
     return (
         <div>
+              <Helmet>
+                <title>Sports Shala - Register</title>
+            </Helmet>
              <div className="">
                 <div className="hero-content flex-col lg:flex-row-reverse">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
@@ -71,7 +76,16 @@ const Signup = () => {
                                 </label>
                             </div>
                             <div className="form-control mt-6">
-                                <input className="btn btn-primary" type="submit" value="Sign Up" />
+                               <button
+              type='submit'
+              className='bg-rose-500 w-full rounded-md py-3 text-white'
+            >
+              {loading ? (
+                <TbFidgetSpinner className='m-auto animate-spin' size={24} />
+              ) : (
+                'Continue'
+              )}
+            </button>
                             </div>
                         </form>
                         <p><small>Already have an account <Link to="/login">Login</Link></small></p>
