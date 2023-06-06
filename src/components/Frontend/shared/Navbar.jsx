@@ -2,15 +2,48 @@ import React, { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
+import useAdmin from './../../../hooks/useAdmin';
+import useInstructor from '../../../hooks/useInstructor';
 
 const Navbar = () => {
-   const { user, logOut } = useContext(AuthContext)
+  const { user, logOut } = useContext(AuthContext)
+  const [isAdmin] = useAdmin();
+  const [isInstructor] = useInstructor();
   
   const handleLogOut = () => {
         logOut()
             .then()
             .catch(error => console.log(error));
+  }
+  
+  const navbar = <>
+
+    {
+      isAdmin ?
+        <>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/instructor">Instructor</Link></li>
+          <li><Link to="/classes">Classes</Link></li>
+          <li><Link to="admin/dashboard">Dashboard</Link></li>
+        </> :
+        isInstructor ? <>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/instructor">Instructor</Link></li>
+          <li><Link to="/classes">Classes</Link></li>
+          <li><Link to="instructor/dashboard">Dashboard</Link></li>
+      </> : 
+        <>
+          <li><Link to="/">Home</Link></li>
+          <li><Link to="/instructor">Instructor</Link></li>
+          <li><Link to="/classes">Classes</Link></li>
+          <li><Link to="student/dashboard">Dashboard</Link></li>
+        </>
     }
+       
+  </>
+  
+     
+  
     
     return (
         <div className='max-w-screen-xl mx-auto'>
@@ -21,20 +54,14 @@ const Navbar = () => {
         <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /></svg>
       </label>
       <ul tabIndex={0} className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/instructor">Instructor</Link></li>
-        <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+        {navbar}
       </ul>
     </div>
     <a className="btn btn-ghost normal-case text-xl"><img src={logo} alt="" className='lg:h-16 lg:w-16 h-6 mr-2'/> <Link to="/">Sports Shala</Link></a>
   </div>
   <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
-        <li><Link to="/">Home</Link></li>
-        <li><Link to="/instructor">Instructor</Link></li>
-        <li><Link to="/classes">Classes</Link></li>
-        <li><Link to="/dashboard">Dashboard</Link></li>
+     {navbar}
     </ul>
                 </div>
   <div className="">
