@@ -18,9 +18,9 @@ const AddClass = () => {
   const handleSubmit = event => {
     event.preventDefault()
     setLoading(true)
-    const name = event.target.title.value
+    const name = event.target.name.value
     const price = event.target.price.value
-    const seats = event.target.price.value
+    const seats = event.target.seats.value
     const image = event.target.image.files[0]
     const category = event.target.category.value
     setUploadButtonText('Uploading...')
@@ -48,7 +48,7 @@ const AddClass = () => {
             setUploadButtonText('Uploaded!')
             setLoading(false)
             toast.success('Class Added!')
-            navigate('/')
+            navigate('/instructor/dashboard/myclass')
           })
           .catch(err => console.log(err))
 
