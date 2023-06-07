@@ -1,17 +1,16 @@
 import React from 'react';
+import { useContext } from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../providers/AuthProvider';
 import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
-import { useState } from 'react';
-import { UpdateClass } from './../../api/class';
-import { useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
-import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
+import { UpdateRole } from '../../api/user';
 
-
-const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsButtonDisabled }) => {
-
-    const [status, setStatus] = useState("")
+const RoleModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsButtonDisabled }) => {
+    
+    const [role, setRole] = useState("")
          const navigate = useNavigate()
   const { user } = useContext(AuthContext)
 
@@ -20,17 +19,15 @@ const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsBu
     const handleSubmit = event => {
         event.preventDefault()
         setLoading(true)
-        const feedback = event.target.feedback.value
-        const classData = {
-          status: status,
-          feedback: feedback,
+        const roleData = {
+          role: role,
         }
-        UpdateClass(id, classData)
+        UpdateRole(id, roleData)
          .then(data => {
         if (data.modifiedCount == 1) {
              setLoading(false)
-            toast.success('Class Updated!')
-              navigate('/admin/dashboard/classes')
+            toast.success('Role Updated!')
+              navigate('/admin/dashboard/users')
              refetch()
             setIsEditModalOpen(false)
             setIsButtonDisabled(true)
@@ -40,11 +37,8 @@ const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsBu
 
         setLoading(false)
     }
-
-
-
     return (
-       <Transition appear show={isOpen} as={Fragment}>
+          <Transition appear show={isOpen} as={Fragment}>
       <Dialog
         as='div'
         className='relative z-10'
@@ -78,29 +72,25 @@ const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsBu
                   as='h3'
                   className='text-lg font-medium text-center leading-6 text-gray-900'
                 >
-                  Set Class Status
+                  Set User Role
                                 </Dialog.Title>
                                 
                                 <form onSubmit={handleSubmit}>
-                                     <div className='mt-2 max-w-screen-xl mx-auto'>
-                                    <label htmlFor="feedback" className='mb-5'>Feedback of Admin</label>
-                                    <textarea name="feedback" id="feedback" cols="40" rows="5" className='border border-2 mt-5' required></textarea>
-                </div>
                 <hr className='mt-8 ' />
                 <div className='mt-2 flex mt-2 justify-around'>
                   <button
                     type='submit'
                     className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2' 
-                    onClick={() => setStatus("Approved")}
+                    onClick={() => setRole("instructor")}
                   >
-                    Approved
+                    instructor
                                     </button>
                                      <button
                     type='submit'
                     className='inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
-                    onClick={() => setStatus("Denied")} 
+                    onClick={() => setRole("admin")} 
                   >
-                    Denied
+                    admin
                   </button>
                 </div>
                                 </form>
@@ -115,4 +105,4 @@ const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsBu
     );
 };
 
-export default StatusModal;
+export default RoleModal;

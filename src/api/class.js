@@ -42,3 +42,8 @@ export const UpdateClass = async (id, status) => {
   const data = await response.json()
   return data
 }
+
+
+
+
+

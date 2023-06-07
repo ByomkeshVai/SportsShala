@@ -16,15 +16,27 @@ const Signup = () => {
      const onSubmit = data => {
          createUser(data.email, data.password)
              .then(result => {
+                 const loggedUser = result.user;
+                console.log(loggedUser);
                  updateUserProfile(data.name, data.photoURL)
-                 toast.success('Signup Successful')
-                 saveUser(result.user)
-                 navigate(from, { replace: true })
-             })
-          .catch(err => {
-                setLoading(false)
-                toast.error(err.message)
-              })
+                   navigate(from, { replace: true })
+                const saveUser = { name: data.name, email: data.email, role: "student" }
+                          fetch(`${import.meta.env.VITE_API_URL}/users/${loggedUser.email}`, {
+                            method: 'PUT',
+                            headers: {
+                                    'content-type': 'application/json',
+                                    authorization: `Bearer ${localStorage.getItem('access-token')}`,
+                                },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                   toast.success('Signup Successful')
+                                   
+                                }
+                            })
+                    })
     };
 
     return (

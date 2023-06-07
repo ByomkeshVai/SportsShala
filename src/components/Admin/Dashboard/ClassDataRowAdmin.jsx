@@ -9,6 +9,9 @@ const ClassDataRowAdmin = ({ classes, refetch }) => {
     let [isOpen, setIsOpen] = useState(false)
     let [status, setStatus] = useState(" ")
     let [isEditModalOpen, setIsEditModalOpen] = useState(false)
+    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+
+
 
   function openModal() {
     setIsOpen(true)
@@ -73,7 +76,7 @@ const ClassDataRowAdmin = ({ classes, refetch }) => {
             aria-hidden='true'
             className={`absolute inset-0 ${classPending ? classActive : classDenied} rounded-full`}
           ></span>
-          <span className='relative' onClick={() => setIsEditModalOpen(true)}>{classes?.status}</span>
+          <button className='relative' onClick={() => setIsEditModalOpen(true)} disabled={isButtonDisabled}>{classes?.status}</button>
         </span>
         <StatusModal
           isOpen={isEditModalOpen}
@@ -81,7 +84,8 @@ const ClassDataRowAdmin = ({ classes, refetch }) => {
           classes={classes}
           id={classes._id}
           refetch={refetch}
-          setIsEditModalOpen={setIsEditModalOpen}
+                    setIsEditModalOpen={setIsEditModalOpen}
+                    setIsButtonDisabled={setIsButtonDisabled}
         />
       </td>
 
