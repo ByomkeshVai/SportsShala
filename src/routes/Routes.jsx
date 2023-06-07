@@ -48,7 +48,7 @@ export const router = createBrowserRouter([
     ),
     children: [
       { path: '/admin/dashboard/classes', element: <ManageClass /> },
-      { path: '/admin/dashboard/instructor', element: <ManageInstructor /> },
+      { path: '/admin/dashboard/users', element: <ManageInstructor /> },
 
     ],
   },

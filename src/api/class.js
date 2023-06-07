@@ -13,7 +13,7 @@ export const addClassData = async classData => {
   return data
 }
 
-// Delete a room
+// Delete a Class
 export const deleteClass = async id => {
   const response = await fetch(`${import.meta.env.VITE_API_URL}/classes/${id}`, {
     method: 'DELETE',
@@ -24,4 +24,21 @@ export const deleteClass = async id => {
   })
   const result = await response.json()
   return result
+}
+
+// update Class status
+export const UpdateClass = async (id, status) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/class/status/${id}`,
+    {
+      method: 'PATCH',
+      headers: {
+        'content-type': 'application/json',
+        authorization: `Bearer ${localStorage.getItem('access-token')}`,
+      },
+      body: JSON.stringify(status),
+    }
+  )
+  const data = await response.json()
+  return data
 }

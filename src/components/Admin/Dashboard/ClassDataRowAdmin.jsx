@@ -1,10 +1,14 @@
 import React from 'react';
-import { deleteClass } from '../../../api/class';
 import { useState } from 'react';
+import { UpdateClass, deleteClass } from '../../../api/class';
 import DeleteModal from '../../Modal/DeleteModal';
+import StatusModal from '../../Modal/StatusModal';
 
-const ClassDataRow = ({ classes, refetch }) => {
-      let [isOpen, setIsOpen] = useState(false)
+
+const ClassDataRowAdmin = ({ classes, refetch }) => {
+    let [isOpen, setIsOpen] = useState(false)
+    let [status, setStatus] = useState(" ")
+    let [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   function openModal() {
     setIsOpen(true)
@@ -20,11 +24,12 @@ const ClassDataRow = ({ classes, refetch }) => {
       })
       .catch(err => console.log(err))
           closeModal()
-          
-        //   let classPending = classes.status == 'pending' ? "className" : "bg-blue-600";
-        //   let classActive = classes.status == 'approved' ? "className" : "bg-green-600";
-        //   let classDenied = classes?.status == 'denied' ? "className" : "bg-red-600";
-  }
+    }
+
+              
+          let classPending = classes.status ==='pending' ? "className" : "bg-gray-600";
+          let classActive = classes.status === 'approved' ? "className" : "bg-green-600";
+          let classDenied = classes?.status === 'denied' ? "className" : "bg-blue-600";
     return (
         <tr>
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
@@ -54,13 +59,33 @@ const ClassDataRow = ({ classes, refetch }) => {
              <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <p className='text-gray-900 whitespace-no-wrap'>${classes?.price}</p>
             </td>
-              <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className={`text-gray-900 whitespace-no-wrap`}>{(classes?.status).toUpperCase()}</p>
+             <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <p className='text-gray-900 whitespace-no-wrap'>{classes.instructor.name}</p>
             </td>
              <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <p className='text-gray-900 whitespace-no-wrap'>{(classes.feedback) ? (classes.feedback) : <p>No Feedback Yet</p> }</p>
+        <p className='text-gray-900 whitespace-no-wrap'>{classes.instructor.email}</p>
             </td>
-                  <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+<td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
+        <span
+          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight'
+        >
+          <span
+            aria-hidden='true'
+            className={`absolute inset-0 ${classPending ? classActive : classDenied} rounded-full`}
+          ></span>
+          <span className='relative' onClick={() => setIsEditModalOpen(true)}>{classes?.status}</span>
+        </span>
+        <StatusModal
+          isOpen={isEditModalOpen}
+          closeModal={() => setIsEditModalOpen(false)}
+          classes={classes}
+          id={classes._id}
+          refetch={refetch}
+          setIsEditModalOpen={setIsEditModalOpen}
+        />
+      </td>
+
+        <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <span
           onClick={openModal}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight'
@@ -82,4 +107,4 @@ const ClassDataRow = ({ classes, refetch }) => {
     );
 };
 
-export default ClassDataRow;
+export default ClassDataRowAdmin;

@@ -17,7 +17,6 @@ const MyClass = () => {
         `${import.meta.env.VITE_API_URL}/classes/${user?.email}`
       )
 
-      console.log('res from axios', res.data)
       return res.data
     },
   })
@@ -88,7 +87,6 @@ const MyClass = () => {
                           key={classes?._id}
                           classes={classes}
                           refetch={refetch}
-                          // fetchRooms={fetchRooms}
                         />
                       ))}
                   </tbody>

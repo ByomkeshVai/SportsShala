@@ -4,14 +4,15 @@ import Sidebar from '../../Frontend/shared/Sidebar';
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { Outlet } from 'react-router-dom';
+import AdminSidebar from './AdminSidebar';
 
 const Dashboard = () => {
     const { user, loading } = useContext(AuthContext);
     return (
         <>
             <div className='relative min-h-screen md:flex'>
-                <h2 className="text-3xl">Hi, {user.displayName}</h2>
-                <Sidebar />
+                
+                <AdminSidebar />
                 <div className='flex-1  md:ml-64'>
                     <div className='p-5'>
                     <Outlet />
