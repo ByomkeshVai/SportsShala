@@ -4,11 +4,19 @@ import Login from '../components/Frontend/authentication/Login'
 import Home from '../components/Frontend/Home'
 import Signup from '../components/Frontend/authentication/Signup'
 import AllInstructor from '../components/Frontend/instructor/AllInstructor'
-import Dashboard from '../components/Admin/Dashboard/Dashboard'
+
+import ADashboard from '../components/Admin/Dashboard/Dashboard'
 import ManageClass from '../components/Admin/Dashboard/ManageClass'
 import ManageInstructor from '../components/Admin/Dashboard/ManageInstructor'
+
+import SDashboard from './../components/Student/Dashboard/Dashboard';
 import SelectedClass from './../components/Student/Dashboard/SelectedClass';
 import EnrolledClass from './../components/Student/Dashboard/EnrolledClass';
+
+import IDashboard from './../components/Instructor/Dashboard/Dashboard';
+import AddClass from './../components/Instructor/Dashboard/AddClass';
+import MyClass from './../components/Instructor/Dashboard/MyClass';
+
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +44,7 @@ export const router = createBrowserRouter([
   {
     path: '/admin/dashboard',
     element: (
-        <Dashboard />
+        <ADashboard />
     ),
     children: [
       { path: '/admin/dashboard/classes', element: <ManageClass /> },
@@ -47,18 +55,18 @@ export const router = createBrowserRouter([
    {
     path: '/instructor/dashboard',
     element: (
-        <Dashboard />
+        <IDashboard />
     ),
     children: [
-      { path: '/instructor/dashboard/classes/', element: <ManageClass /> },
-      { path: '/instructor/dashboard/instructor', element: <ManageInstructor /> },
+      { path: '/instructor/dashboard/classes/', element: <AddClass /> },
+      { path: '/instructor/dashboard/instructor', element: <MyClass /> },
 
     ],
   },
     {
     path: '/student/dashboard',
     element: (
-        <Dashboard />
+        <SDashboard />
     ),
     children: [
       { path: '/student/dashboard/classes/', element: <SelectedClass /> },

@@ -24,20 +24,20 @@ const Navbar = () => {
           <li><Link to="/">Home</Link></li>
           <li><Link to="/instructor">Instructor</Link></li>
           <li><Link to="/classes">Classes</Link></li>
-          <li><Link to="admin/dashboard">Dashboard</Link></li>
+          <li><Link to="/admin/dashboard">Dashboard</Link></li>
         </> :
         isInstructor ? <>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/instructor">Instructor</Link></li>
           <li><Link to="/classes">Classes</Link></li>
-          <li><Link to="instructor/dashboard">Dashboard</Link></li>
-      </> : 
+          <li><Link to="/instructor/dashboard">Dashboard</Link></li>
+      </> :
         <>
           <li><Link to="/">Home</Link></li>
           <li><Link to="/instructor">Instructor</Link></li>
           <li><Link to="/classes">Classes</Link></li>
-          <li><Link to="student/dashboard">Dashboard</Link></li>
-        </>
+          <li><Link to="/student/dashboard">Dashboard</Link></li>
+          </>
     }
        
   </>
