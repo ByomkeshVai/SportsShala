@@ -24,7 +24,7 @@ const InstructorCard = ({instructorsClass}) => {
               transition
             '
             src={instructorsClass.image}
-            alt='Room'
+            alt='Class'
           />
           <div
             className='
@@ -39,7 +39,7 @@ const InstructorCard = ({instructorsClass}) => {
                 <div className='font-semibold text-lg text-center '>Category: {instructorsClass.category}</div>
     
                     <div className='font-semibold text-center'>Price: $ {instructorsClass.price}</div>
-                    <button className="btn btn-sm btn-primary mt-3">Learn More</button>
+                    <button className="btn btn-sm btn-info mt-3">Learn More</button>
       </div>
     </Link>
     );
