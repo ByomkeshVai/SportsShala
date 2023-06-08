@@ -29,7 +29,7 @@ const AddClass = () => {
       .then(data => {
         const classData = {
           name,
-          seats,
+          seats: parseInt(seats),
           price: parseFloat(price),
           image: data.data.display_url,
           instructor: {
