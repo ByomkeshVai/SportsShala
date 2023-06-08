@@ -43,7 +43,16 @@ export const UpdateClass = async (id, status) => {
   return data
 }
 
-
+// get all classes
+export const getAllClasses = async () => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/classes`, {
+     headers: {
+        authorization: `Bearer ${localStorage.getItem('access-token')}`,
+      },
+  })
+  const data = await response.json()
+  return data
+}
 
 
 

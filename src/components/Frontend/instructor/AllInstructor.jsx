@@ -20,7 +20,7 @@ const AllInstructor = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure(
-        "/instructors"
+        "/all/instructors"
       )
       return res.data
     },
@@ -30,16 +30,26 @@ const AllInstructor = () => {
     <>
          {instructors && Array.isArray(instructors) && instructors.length > 0 ? (
            <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-      <div className="mx-auto mb-10 lg:max-w-xl sm:text-center">
-        <p className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-teal-900 uppercase rounded-full bg-teal-accent-400">
-          Discover Our Team
-        </p>
-        <p className="text-base text-gray-700 md:text-lg">
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium.
-        </p>
-      </div>
-      <div className="grid gap-10 mx-auto sm:grid-cols-2 lg:grid-cols-4 lg:max-w-screen-lg">
+   <div class="w-full bg-gray-100 px-10 pt-10 mx-auto">
+                    <div class="container mx-auto mb-8">
+                        <div role="list" aria-label="Behind the scenes People " class="lg:flex md:flex sm:flex items-center xl:justify-center flex-wrap md:justify-center sm:justify-center lg:justify-center">
+                            <div role="listitem" class="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5">
+                                <div class="rounded overflow-hidden shadow-md bg-white">
+                                    <div class="absolute -mt-20 w-full flex justify-center">
+                                        <div class="h-32 w-32">
+                                            <img src="https://st2.depositphotos.com/5479794/8039/i/600/depositphotos_80390852-stock-photo-sports-teacher.jpg" alt="Display Picture of Andres Berlin" role="img" class="rounded-full object-cover h-full w-full shadow-md" />
+                                        </div>
+                                    </div>
+                                    <div class="px-6 mt-16">
+                                            <h1 class="font-bold text-3xl text-center mb-1">Meet Our Instractors</h1>
+                                    </div>
+                                </div>
+                                </div>
+                                
+                        </div>
+                    </div>
+                </div>
+      <div className="grid gap-10 mx-auto sm:grid-cols-2 lg:grid-cols-4 max-w-screen-lg lg:gap-10">
                 {instructors &&
                       instructors?.slice(0, showAll ? instructors.length : 10).map(instructors => (
                         <SingleInstructor

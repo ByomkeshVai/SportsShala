@@ -17,6 +17,8 @@ import IDashboard from './../components/Instructor/Dashboard/Dashboard';
 import AddClass from './../components/Instructor/Dashboard/AddClass';
 import MyClass from './../components/Instructor/Dashboard/MyClass';
 import DetailsInstructor from '../components/Frontend/DetailsInstructor/DetailsInstructor'
+import ClassesFR from '../components/Frontend/classArea/ClassesFR'
+import ClassArea from '../components/Frontend/classArea/ClassArea'
 
 
 export const router = createBrowserRouter([
@@ -39,6 +41,10 @@ export const router = createBrowserRouter([
       {
         path: '/instructor',
         element: <AllInstructor></AllInstructor>
+      },
+       {
+        path: '/classes',
+        element: <ClassArea></ClassArea>
       },
       {
         path: 'instructor/classes/:email',
