@@ -13,9 +13,8 @@ const ClassCard = ({ allClass }) => {
     const location = useLocation();
 
     const handleAddToSelect = allClass => {
-        console.log(allClass);
         if(user && user.email){
-            const selectItem = {selectItemId: _id, name, image, price, email: user.email, instructor: allClass.instructor.email }
+          const selectItem = { selectItemId: _id, name, image, price, student_name: user.name, email: user.email, instructor: allClass.instructor.email, status: "unpaid" }
             fetch(`${import.meta.env.VITE_API_URL}/select`, {
                 method: 'POST',
                 headers: {

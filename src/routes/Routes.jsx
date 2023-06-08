@@ -4,7 +4,7 @@ import Login from '../components/Frontend/authentication/Login'
 import Home from '../components/Frontend/Home'
 import Signup from '../components/Frontend/authentication/Signup'
 import AllInstructor from '../components/Frontend/instructor/AllInstructor'
-
+import Payment from './../components/Student/Dashboard/Pyament';
 import ADashboard from '../components/Admin/Dashboard/Dashboard'
 import ManageClass from '../components/Admin/Dashboard/ManageClass'
 import ManageInstructor from '../components/Admin/Dashboard/ManageInstructor'
@@ -19,6 +19,7 @@ import MyClass from './../components/Instructor/Dashboard/MyClass';
 import DetailsInstructor from '../components/Frontend/DetailsInstructor/DetailsInstructor'
 import ClassesFR from '../components/Frontend/classArea/ClassesFR'
 import ClassArea from '../components/Frontend/classArea/ClassArea'
+import StudentPayment from '../components/Student/Dashboard/StudentPayment'
 
 
 export const router = createBrowserRouter([
@@ -50,7 +51,7 @@ export const router = createBrowserRouter([
         path: 'instructor/classes/:email',
         element: <DetailsInstructor></DetailsInstructor>,
         loader: ({params}) => fetch(`import.meta.env.VITE_API_URL/instructor/classes/${params.email}`)
-      }
+      },
     ]
   },
   {

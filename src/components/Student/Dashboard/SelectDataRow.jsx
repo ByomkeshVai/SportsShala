@@ -2,10 +2,16 @@ import React from 'react';
 import { useState } from 'react';
 import { deleteSelect } from '../../../api/select';
 import DeleteModal from '../../Modal/DeleteModal';
+import StudentPayment from './StudentPayment';
+import useAuth from '../../../hooks/useAuth';
 
-const SelectDataRow = ({ select, refetch }) => {
+const SelectDataRow = ({ select, refetch, total }) => {
 
-        let [isOpen, setIsOpen] = useState(false)
+        
+
+  const {user} = useAuth()
+  let [isOpen, setIsOpen] = useState(false)
+
 
   function openModal() {
     setIsOpen(true)
@@ -23,6 +29,7 @@ const SelectDataRow = ({ select, refetch }) => {
           closeModal()
 
   }
+
 
   
     return (
@@ -50,10 +57,10 @@ const SelectDataRow = ({ select, refetch }) => {
         </td>
          <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <p className='text-gray-900 whitespace-no-wrap'>{select?.instructor}</p>
-      </td>
+        </td>
+    
+        <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
 
-             
-                  <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <span
           onClick={openModal}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight'
