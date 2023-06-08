@@ -20,7 +20,7 @@ const Signup = () => {
                 console.log(loggedUser);
                  updateUserProfile(data.name, data.photoURL)
                    navigate(from, { replace: true })
-                const saveUser = { name: data.name, email: data.email, role: "student" }
+                const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: "student" }
                           fetch(`${import.meta.env.VITE_API_URL}/users/${loggedUser.email}`, {
                             method: 'PUT',
                             headers: {

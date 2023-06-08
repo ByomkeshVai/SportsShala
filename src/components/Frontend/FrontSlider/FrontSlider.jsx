@@ -38,7 +38,9 @@ const FrontSlider = () => {
                 <Swiper
                     modules={[Autoplay]}
         slidesPerView={4}
-         autoplay={{ delay: 1000 }}
+                    autoplay={{
+                        delay: 1000,
+        disableOnInteraction: true            }}
         className="mySwiper swiper-slide"
         >
                 {

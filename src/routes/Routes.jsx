@@ -16,6 +16,7 @@ import EnrolledClass from './../components/Student/Dashboard/EnrolledClass';
 import IDashboard from './../components/Instructor/Dashboard/Dashboard';
 import AddClass from './../components/Instructor/Dashboard/AddClass';
 import MyClass from './../components/Instructor/Dashboard/MyClass';
+import DetailsInstructor from '../components/Frontend/DetailsInstructor/DetailsInstructor'
 
 
 export const router = createBrowserRouter([
@@ -38,6 +39,11 @@ export const router = createBrowserRouter([
       {
         path: '/instructor',
         element: <AllInstructor></AllInstructor>
+      },
+      {
+        path: 'instructor/classes/:email',
+        element: <DetailsInstructor></DetailsInstructor>,
+        loader: ({params}) => fetch(`import.meta.env.VITE_API_URL/instructor/classes/${params.email}`)
       }
     ]
   },
