@@ -3,15 +3,21 @@ import { Link, NavLink, useNavigate } from 'react-router-dom';
 import { GrLogout } from 'react-icons/Gr'
 import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/Ai'
-import { AuthContext } from '../../../providers/AuthProvider';
 import Logo from '../../Frontend/shared/Logo';
+import { AuthContext } from '../../../providers/AuthProvider';
+import { BiSolidSelectMultiple } from 'react-icons/Bi';
+import useSelect from './../../../hooks/useSelect';
 
-const AdminSidebar = () => {
-      const navigate = useNavigate()
+const StudentSidebar = () => {
+
+    const [select] = useSelect();
+
+          const navigate = useNavigate()
   const [toggle, setToggle] = useState(false)
   const { user, logOut } = useContext(AuthContext)
 
   const [isActive, setActive] = useState('false')
+
   // Sidebar Responsive Handler
   const handleToggle = () => {
     setActive(!isActive)
@@ -21,7 +27,7 @@ const AdminSidebar = () => {
     navigate('/')
   }
     return (
-            <>
+          <>
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
@@ -71,24 +77,25 @@ const AdminSidebar = () => {
                          <div>
           <hr />
           <NavLink
-            to='/admin/dashboard/classes'
+            to='/student/dashboard/classes/'
             className={({ isActive }) =>
               `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
                 isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
               }`
             }
-          >
-            <span className='mx-4 font-medium'>Manage Classes</span>
+          ><BiSolidSelectMultiple></BiSolidSelectMultiple>
+                                <span className='mx-4 font-medium'>Selected Classes</span>  
+                    <div className="badge badge-accent">+{select?.length || 0}</div>        
           </NavLink>
            <NavLink
-            to='/admin/dashboard/users'
+            to='/student/dashboard/enrolled'
             className={({ isActive }) =>
               `flex items-center px-4 py-2 mt-5  transition-colors duration-300 transform  hover:bg-gray-300   hover:text-gray-700 ${
                 isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
               }`
             }
           >
-            <span className='mx-4 font-medium'>Manage Users</span>
+            <span className='mx-4 font-medium'>Enrolled Classes</span>
           </NavLink>
         </div>
           </div>
@@ -122,4 +129,4 @@ const AdminSidebar = () => {
     );
 };
 
-export default AdminSidebar;
+export default StudentSidebar;

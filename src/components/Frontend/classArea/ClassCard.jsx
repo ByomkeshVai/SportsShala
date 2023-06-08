@@ -3,18 +3,16 @@ import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
-import useSelect from '../../../hooks/useSelect';
 
 const ClassCard = ({ allClass }) => {
     
     const { image, name, price, seats, _id } = allClass;
     
     const { user } = useContext(AuthContext);
-    const [refetch] = useSelect();
     const navigate = useNavigate();
     const location = useLocation();
 
-     const handleAddToSelect = allClass => {
+    const handleAddToSelect = allClass => {
         console.log(allClass);
         if(user && user.email){
             const selectItem = {selectItemId: _id, name, image, price, email: user.email, instructor: allClass.instructor.email }
@@ -26,13 +24,13 @@ const ClassCard = ({ allClass }) => {
                 },
                 body: JSON.stringify(selectItem)
             })
-            .then(res => res.json())
-            .then(data => {
-                if(data.insertedId){
-                    refetch();
-                   toast("Class Selected, Check Dashboard")
-                }
-            })
+           .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                   toast.success('Class Saved, Check Your Dashboard')
+                                   
+                                }
+                            })
         }
         else{
             navigate('/login', {state: {from: location}})
