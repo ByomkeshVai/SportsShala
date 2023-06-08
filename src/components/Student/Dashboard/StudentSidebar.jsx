@@ -5,7 +5,6 @@ import { FcSettings } from 'react-icons/fc'
 import { AiOutlineBars } from 'react-icons/Ai'
 import Logo from '../../Frontend/shared/Logo';
 import { AuthContext } from '../../../providers/AuthProvider';
-import { BiSolidSelectMultiple } from 'react-icons/Bi';
 import useSelect from './../../../hooks/useSelect';
 
 const StudentSidebar = () => {
@@ -83,7 +82,7 @@ const StudentSidebar = () => {
                 isActive ? 'bg-gray-300  text-gray-700' : 'text-gray-600'
               }`
             }
-          ><BiSolidSelectMultiple></BiSolidSelectMultiple>
+          >
                                 <span className='mx-4 font-medium'>Selected Classes</span>  
                     <div className="badge badge-accent">+{select?.length || 0}</div>        
           </NavLink>
