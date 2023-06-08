@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const InstructorCard = ({instructorsClass}) => {
     return (
         
-        <Link to={`/classes/${instructorsClass._id}`} className='col-span-1 cursor-pointer group'>
-      <div className='flex flex-col gap-2 w-full'>
+        <Link to={`/classes/${instructorsClass._id}`} className='col-span-2 cursor-pointer group shadow-xl border border-2 p-8 rounded-xl'>
+      <div className='flex flex-col gap-3 w-full '>
         <div
           className='
             aspect-square 
@@ -35,11 +35,11 @@ const InstructorCard = ({instructorsClass}) => {
           >
           </div>
         </div>
-                <div className='font-semibold text-lg'>{instructorsClass.seats}</div>
-                <div className='font-semibold text-lg'>{instructorsClass.category}</div>
-        <div className='flex flex-row items-center gap-1'>
-          <div className='font-semibold'>$ {instructorsClass.price}</div>
-        </div>
+                <div className='font-semibold text-lg text-center '>Available: {instructorsClass.seats}</div>
+                <div className='font-semibold text-lg text-center '>Category: {instructorsClass.category}</div>
+    
+                    <div className='font-semibold text-center'>Price: $ {instructorsClass.price}</div>
+                    <button className="btn btn-sm btn-primary mt-3">Learn More</button>
       </div>
     </Link>
     );
