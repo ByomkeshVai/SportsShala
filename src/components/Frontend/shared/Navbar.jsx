@@ -26,25 +26,25 @@ const Navbar = () => {
           <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
-          <li className='text-lg mr-3 hover:text-blue-900 '><Link to="/admin/dashboard">Dashboard</Link></li>
+          <li className='text-lg  hover:text-blue-900 '><Link to="/admin/dashboard">Dashboard</Link></li>
         </> :
         isInstructor ? <>
           <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
-          <li className='text-lg mr-3 hover:text-blue-900' ><Link to="/instructor/dashboard">Dashboard</Link></li>
+          <li className='text-lg hover:text-blue-900' ><Link to="/instructor/dashboard">Dashboard</Link></li>
         </> 
         : isStudent ?
         <>
           <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
-          <li className='text-lg mr-3 hover:text-blue-900'><Link to="/student/dashboard">Dashboard</Link></li>
+          <li className='text-lg hover:text-blue-900'><Link to="/student/dashboard">Dashboard</Link></li>
     </>
     :
     <>
      <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
-          <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
+          <li className='text-lg hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
       <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
     
   </>
@@ -56,7 +56,7 @@ const Navbar = () => {
   
     
     return (
-        <div className='max-w-screen-xl mx-auto'>
+        <div className='max-w-screen-xl mx-auto relative z-40 '>
             <div className="navbar mb-4">
   <div className="navbar-start">
     <div className="dropdown">
@@ -79,12 +79,13 @@ const Navbar = () => {
                 </Link>
             </div> 
   </div>
-  <div className="navbar-end hidden lg:flex">
+  <div className="navbar-center hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
      {navbar}
     </ul>
-                </div>
-  <div className="">
+          </div>
+          
+  <div className="navbar-end">
                {
                         user &&
             
