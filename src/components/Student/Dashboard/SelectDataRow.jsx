@@ -29,6 +29,10 @@ const SelectDataRow = ({ select, refetch, user }) => {
 
   }
 
+    // class state
+  const [selectInfo, setSelectInfo] = useState({
+    classId: select.selectItemId,
+  })
 
   
     return (
@@ -76,6 +80,7 @@ const SelectDataRow = ({ select, refetch, user }) => {
         setIsEditModalOpen={setIsEditModalOpen}
             select={select}
             user={user}
+            selectInfo={selectInfo}
         />
          
 </td>

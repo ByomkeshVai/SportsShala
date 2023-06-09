@@ -6,10 +6,10 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 import useAuth from '../../../../hooks/useAuth'
-import { UpdateSeats } from '../../../../api/class'
+import { updateSeats } from '../../../../api/select'
 
 
-const CheckoutForm = ({ select, closeModal }) => {
+const CheckoutForm = ({ select, closeModal, selectInfo }) => {
   const navigate = useNavigate()
   const stripe = useStripe()
   const elements = useElements()
@@ -86,10 +86,16 @@ const CheckoutForm = ({ select, closeModal }) => {
         //  save payment information to the server
             const payment = {
                 transactionId: paymentIntent.id,
-                date: new Date(),
+              date: new Date(),
+                 classId: select._id
             }
-            axiosSecure.patch(`/select/${select._id}`, payment)
-              .then(res => {
+         axiosSecure.patch(`/select/${select._id}`, payment)
+           .then(res => {
+             console.log(selectInfo.classId);
+                     updateSeats(selectInfo.classId)
+                      .then(data => {
+                      console.log(data)
+                      })
                     setProcessing(false)
               const text = `Payment Successful!, TransactionId: ${paymentIntent.id}`
                     toast.success(text)

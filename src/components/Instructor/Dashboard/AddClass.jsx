@@ -38,13 +38,13 @@ const AddClass = () => {
             email: user?.email,
             },
           category,
-          status: 'pending'
+          status: 'pending',
+          enroll: parseInt(0)
         }
 
         // post room data to server
         addClassData(classData)
           .then(data => {
-            console.log(data)
             setUploadButtonText('Uploaded!')
             setLoading(false)
             toast.success('Class Added!')

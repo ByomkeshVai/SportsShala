@@ -29,3 +29,37 @@ export const updateStatus = async (id, status) => {
   const data = await response.json()
   return data
 }
+
+
+
+
+// update seats
+// update room status
+export const updateSeats = async (id) => {
+  const response = await fetch(
+    `${import.meta.env.VITE_API_URL}/class/update/${id}`,
+    {
+      method: 'PUT',
+     headers: {
+      'content-type': 'application/json',
+      authorization: `Bearer ${localStorage.getItem('access-token')}`,
+    },  
+    })
+  const data = await response.json()
+  return data
+}
+
+
+
+// // Delete a Selection
+// export const deleteSelect = async id => {
+//   const response = await fetch(`${import.meta.env.VITE_API_URL}/select/${id}`, {
+//     method: 'DELETE',
+//     headers: {
+//       'content-type': 'application/json',
+//       authorization: `Bearer ${localStorage.getItem('access-token')}`,
+//     },
+//   })
+//   const result = await response.json()
+//   return result
+// }

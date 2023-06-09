@@ -15,7 +15,7 @@ import useAuth from '../../../hooks/useAuth';
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 
 
-const StudentPayment = ({ setIsEditModalOpen, isOpen, closeModal, select, user }) => {
+const StudentPayment = ({ setIsEditModalOpen, isOpen, closeModal, select, user, selectInfo }) => {
 
     return (
           <Transition appear show={isOpen} as={Fragment}>
@@ -73,7 +73,8 @@ const StudentPayment = ({ setIsEditModalOpen, isOpen, closeModal, select, user }
                 <Elements stripe={stripePromise}>
                   <CheckoutForm
                     closeModal={closeModal}
-                    select={select}
+                      select={select}
+                      selectInfo={selectInfo}
                   ></CheckoutForm>
                 </Elements>
               </Dialog.Panel>
