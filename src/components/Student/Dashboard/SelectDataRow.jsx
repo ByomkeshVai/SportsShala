@@ -5,11 +5,10 @@ import DeleteModal from '../../Modal/DeleteModal';
 import StudentPayment from './StudentPayment';
 import useAuth from '../../../hooks/useAuth';
 
-const SelectDataRow = ({ select, refetch, total }) => {
+const SelectDataRow = ({ select, refetch, user }) => {
 
-        
+        let [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
-  const {user} = useAuth()
   let [isOpen, setIsOpen] = useState(false)
 
 
@@ -61,6 +60,28 @@ const SelectDataRow = ({ select, refetch, total }) => {
     
         <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
 
+         <span
+          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight'
+        >
+          <span
+            aria-hidden='true'
+            className="absolute inset-0 bg-blue-600 rounded-full"
+          ></span>
+                                <button className='relative' onClick={() => setIsEditModalOpen(true)}>{ select?.status}</button>
+        </span>
+       <StudentPayment
+        isOpen={isEditModalOpen}
+        closeModal={() => setIsEditModalOpen(false)}
+        refetch={refetch}
+        setIsEditModalOpen={setIsEditModalOpen}
+            select={select}
+            user={user}
+        />
+         
+</td>
+
+
+<td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <span
           onClick={openModal}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight'

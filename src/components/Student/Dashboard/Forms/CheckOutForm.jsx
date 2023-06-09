@@ -6,9 +6,10 @@ import toast from 'react-hot-toast'
 import { useNavigate } from 'react-router-dom'
 import useAxiosSecure from '../../../../hooks/useAxiosSecure'
 import useAuth from '../../../../hooks/useAuth'
+import { UpdateSeats } from '../../../../api/class'
 
 
-const CheckoutForm = ({ select, closeModal, total }) => {
+const CheckoutForm = ({ select, closeModal }) => {
   const navigate = useNavigate()
   const stripe = useStripe()
   const elements = useElements()
@@ -20,9 +21,9 @@ const CheckoutForm = ({ select, closeModal, total }) => {
     const [transactionId, setTransactionId] = useState('');
 
   useEffect(() => {
-    if (total > 0) {
+    if (select.price > 0) {
       axiosSecure
-        .post('/create-payment-intent', { price: total })
+        .post('/create-payment-intent', { price: select.price })
           .then(res => {
             console.log(res.data.clientSecret)
           setClientSecret(res.data.clientSecret)
@@ -82,19 +83,13 @@ const CheckoutForm = ({ select, closeModal, total }) => {
       // save payment information to the server
        if (paymentIntent.status === 'succeeded') {
             setTransactionId(paymentIntent.id);
-            // save payment information to the server
+        //  save payment information to the server
             const payment = {
-                email: user?.email,
                 transactionId: paymentIntent.id,
-                total,
                 date: new Date(),
-                quantity: select.length,
-                selectClass: select.map(item => item._id),
-                status: 'Paid',
-                className: select.map(item => item.name)
             }
-            axiosSecure.post('/payments', payment)
-                .then(res => {
+            axiosSecure.patch(`/select/${select._id}`, payment)
+              .then(res => {
                     setProcessing(false)
               const text = `Payment Successful!, TransactionId: ${paymentIntent.id}`
                     toast.success(text)
@@ -135,7 +130,7 @@ const CheckoutForm = ({ select, closeModal, total }) => {
            type="submit"
             className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2'
           >
-              Pay ${total}
+              Pay ${select.price}
           </button>
         </div>
       </form>

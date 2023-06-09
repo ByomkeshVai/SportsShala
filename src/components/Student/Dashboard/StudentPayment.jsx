@@ -10,15 +10,13 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js'
 import CheckoutForm from './Forms/CheckOutForm';
 import useSelect from '../../../hooks/useSelect';
+import useAuth from '../../../hooks/useAuth';
 
 const stripePromise = loadStripe(import.meta.env.VITE_Payment_Gateway_PK)
 
 
-const StudentPayment = ({ setIsEditModalOpen, isOpen, closeModal, total }) => {
+const StudentPayment = ({ setIsEditModalOpen, isOpen, closeModal, select, user }) => {
 
-    const [select] = useSelect()
-    
-    
     return (
           <Transition appear show={isOpen} as={Fragment}>
       <Dialog
@@ -56,18 +54,26 @@ const StudentPayment = ({ setIsEditModalOpen, isOpen, closeModal, total }) => {
                 >
                   Please Review Info Before Enroll
                 </Dialog.Title>
-
                 <div className='mt-2'>
                   <p className='text-sm text-gray-500'>
-                    Price: $ {total}
+                    Class Name: {select?.name}
+                  </p>
+                </div>
+                <div className='mt-2'>
+                  <p className='text-sm text-gray-500'>
+                    User Name: {user?.displayName}
+                  </p>
+                </div>
+                <div className='mt-2'>
+                  <p className='text-sm text-gray-500'>
+                    Price: $ {select?.price}
                   </p>
                 </div>
                 <hr className='mt-8 ' />
                 <Elements stripe={stripePromise}>
                   <CheckoutForm
                     closeModal={closeModal}
-                                        select={select}
-                                        total={total}
+                    select={select}
                   ></CheckoutForm>
                 </Elements>
               </Dialog.Panel>

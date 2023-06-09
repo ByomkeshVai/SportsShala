@@ -13,7 +13,7 @@ const EnrolledClass = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure(
-       `${import.meta.env.VITE_API_URL}/payments/${user?.email}`
+       `${import.meta.env.VITE_API_URL}/select/${user?.email}`
       )
 
       return res.data

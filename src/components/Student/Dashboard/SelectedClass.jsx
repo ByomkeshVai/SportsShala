@@ -21,9 +21,7 @@ const SelectedClass = () => {
             return res.data;
         },
     })
-
-    const total = select.reduce((sum, item) => item.price + sum, 0);
-    let [isEditModalOpen, setIsEditModalOpen] = useState(false)
+    
     
 
     return (
@@ -32,23 +30,6 @@ const SelectedClass = () => {
         <div className='container mx-auto px-4 sm:px-8'>
           <div className='py-8'>
                         <div className='-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto'>
- <span
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight'
-        >
-          <span
-            aria-hidden='true'
-            className="absolute inset-0 bg-blue-600 rounded-full"
-          ></span>
-                                <button className='relative' onClick={() => setIsEditModalOpen(true)}>{ total}</button>
-        </span>
-       <StudentPayment
-        isOpen={isEditModalOpen}
-        closeModal={() => setIsEditModalOpen(false)}
-        refetch={refetch}
-        setIsEditModalOpen={setIsEditModalOpen}
-        total={total}
-        />
-       
               <div className='inline-block min-w-full shadow rounded-lg overflow-hidden'>
                 <table className='min-w-full leading-normal'>
                   <thead>
@@ -98,8 +79,9 @@ const SelectedClass = () => {
                                                 <SelectDataRow
                                                     key={select?._id}
                                                     select={select}
-                                                    refetch={refetch}
-                                                    total={total}
+                                                refetch={refetch}
+                                                user={user}
+                                                    
                         />
                       ))}
                   </tbody>
