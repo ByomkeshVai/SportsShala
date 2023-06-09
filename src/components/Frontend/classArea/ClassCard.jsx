@@ -4,6 +4,7 @@ import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
+import useAuth from '../../../hooks/useAuth';
 
 const ClassCard = ({ allClass }) => {
 
@@ -12,7 +13,7 @@ const ClassCard = ({ allClass }) => {
     
     const { image, name, price, seats, _id, enroll } = allClass;
     
-    const { user } = useContext(AuthContext);
+    const { user, loading } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -107,7 +108,7 @@ const ClassCard = ({ allClass }) => {
           <p className="text-gray-700 text-base mx-auto">Available Seats: {seats}</p>
           <p className="text-gray-700 text-base mx-auto">Total Enrolled: {enroll}</p>
                 <p className="text-gray-700 text-base mx-auto">Price: {price}</p>
-                <button className="btn btn-sm btn-info mt-3" disabled={isAdmin} onClick={() => handleAddToSelect(allClass)}>Select Class</button>
+                <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || allClass.instructor.email == user.email} onClick={() => handleAddToSelect(allClass)}>Select Class</button>
       </div>
     </div>
     )
