@@ -4,11 +4,13 @@ import { Link } from 'react-router-dom';
 import logo from '../../../assets/images/logo.png'
 import useAdmin from './../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
+import useStudent from '../../../hooks/useStudent';
 
 const Navbar = () => {
   const { user, logOut } = useContext(AuthContext)
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
+  const [isStudent] = useStudent()
   
   const handleLogOut = () => {
         logOut()
@@ -24,20 +26,28 @@ const Navbar = () => {
           <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
-          <li className='text-lg mr-3 hover:text-blue-900'><Link to="/admin/dashboard">Dashboard</Link></li>
+          <li className='text-lg mr-3 hover:text-blue-900 '><Link to="/admin/dashboard">Dashboard</Link></li>
         </> :
         isInstructor ? <>
           <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
           <li className='text-lg mr-3 hover:text-blue-900' ><Link to="/instructor/dashboard">Dashboard</Link></li>
-      </> :
+        </> 
+        : isStudent ?
         <>
           <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
           <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
           <li className='text-lg mr-3 hover:text-blue-900'><Link to="/student/dashboard">Dashboard</Link></li>
-          </>
+    </>
+    :
+    <>
+     <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
+      <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
+    
+  </>
     }
        
   </>

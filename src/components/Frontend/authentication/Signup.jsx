@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -6,12 +6,18 @@ import { toast } from 'react-hot-toast';
 import { saveUser } from '../../../api/auth';
 import { Helmet } from 'react-helmet';
 import { TbFidgetSpinner } from 'react-icons/tb'
+import { AiOutlineEye } from 'react-icons/Ai';
 
 const Signup = () => {
     const { register, handleSubmit, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile, loading, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/'
+
+        const [passwordShown, setPasswordShown] = useState(false);
+     const togglePassword = () => {
+         setPasswordShown(!passwordShown);
+    };
 
      const onSubmit = data => {
          createUser(data.email, data.password)
@@ -72,17 +78,20 @@ const Signup = () => {
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
+                                    
                                 </label>
-                                <input type="password"  {...register("password", {
+                                <input type={passwordShown ? "text" : "password"}  {...register("password", {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 20,
                                     // pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
                                 })} placeholder="password" className="input input-bordered" />
+         <AiOutlineEye onClick={togglePassword} className='absolute right-10 bottom-40 top-80 cursor-pointer'></AiOutlineEye>
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
+                                 
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
