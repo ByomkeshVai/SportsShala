@@ -7,6 +7,8 @@ import { saveUser } from '../../../api/auth';
 import { Helmet } from 'react-helmet';
 import { TbFidgetSpinner } from 'react-icons/tb'
 import { FcGoogle } from 'react-icons/fc'
+import { useState } from 'react';
+import { AiOutlineEye } from 'react-icons/Ai';
 
 const Login = () => {
 
@@ -14,6 +16,11 @@ const Login = () => {
     const { loading, setLoading, signIn, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/'
+
+    const [passwordShown, setPasswordShown] = useState(false);
+     const togglePassword = () => {
+        setPasswordShown(!passwordShown);
+    };
 
      const onSubmit = data => {
         signIn(data.email, data.password)
@@ -66,10 +73,11 @@ const Login = () => {
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password"  {...register("password", {
+                                <input type={passwordShown ? "text" : "password"}  {...register("password", {
                                     required: true,
                                  
-                                })} placeholder="password" className="input input-bordered" />
+                                })} placeholder="password" className="input input-bordered relative" />
+                                    <AiOutlineEye onClick={togglePassword} className='absolute right-10 bottom-48 top-40 cursor-pointer'>Show Password</AiOutlineEye>
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>

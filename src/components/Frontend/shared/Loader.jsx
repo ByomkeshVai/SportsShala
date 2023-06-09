@@ -1,4 +1,4 @@
-import { ScaleLoader } from 'react-spinners'
+import { HashLoader } from 'react-spinners'
 
 const Loader = () => {
   return (
@@ -11,7 +11,7 @@ const Loader = () => {
       items-center 
     '
     >
-      <ScaleLoader size={100} color='blue' />
+      <HashLoader size={100} color="#2E3181" />
     </div>
   )
 }
