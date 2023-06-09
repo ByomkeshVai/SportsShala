@@ -21,22 +21,22 @@ const Navbar = () => {
     {
       isAdmin ?
         <>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/instructor">Instructor</Link></li>
-          <li><Link to="/classes">Classes</Link></li>
-          <li><Link to="/admin/dashboard">Dashboard</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
+          <li className='text-lg mr-3 hover:text-blue-900'><Link to="/admin/dashboard">Dashboard</Link></li>
         </> :
         isInstructor ? <>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/instructor">Instructor</Link></li>
-          <li><Link to="/classes">Classes</Link></li>
-          <li><Link to="/instructor/dashboard">Dashboard</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
+          <li className='text-lg mr-3 hover:text-blue-900' ><Link to="/instructor/dashboard">Dashboard</Link></li>
       </> :
         <>
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/instructor">Instructor</Link></li>
-          <li><Link to="/classes">Classes</Link></li>
-          <li><Link to="/student/dashboard">Dashboard</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
+          <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
+          <li className='text-lg mr-3 hover:text-blue-900'><Link to="/student/dashboard">Dashboard</Link></li>
           </>
     }
        
@@ -57,7 +57,17 @@ const Navbar = () => {
         {navbar}
       </ul>
     </div>
-<img src={logo} alt="" className='lg:h-16 lg:w-16 h-6 mr-2'/> <Link to="/">Sports Shala</Link>
+            <div className="logoarea">
+               <Link to="/">
+              <div className="tag-area flex items-center">
+                <img src={logo} alt="" className='lg:h-24 lg:w-24 h-6' />
+                <div className="div">
+                  <h2 className='font-bold'>Sports Shala</h2>
+                  <p>Learn, Play and Professional</p>
+                </div>
+                </div>
+                </Link>
+            </div> 
   </div>
   <div className="navbar-end hidden lg:flex">
     <ul className="menu menu-horizontal px-1">
@@ -69,9 +79,9 @@ const Navbar = () => {
                         user &&
             
                         <div className="w-10 rounded-full">
-                        <div className="tooltip" data-tip={user?.displayName}>
-                        <div className="avatar">
-                        <div className="rounded-full ring ring-accent ring-offset-base-100 ring-offset-2 lg:h-9 h-8">
+                        <div className="tooltip tooltip-open tooltip-bottom" data-tip={user?.displayName}>
+                        <div className="avatar online">
+                        <div className="rounded-full ring ring-primary ring-offset-base-100 ring-offset-2 lg:h-9 h-8">
                             <img src={user?.photoURL} />
                         </div>
                         </div>
