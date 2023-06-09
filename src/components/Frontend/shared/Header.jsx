@@ -5,7 +5,7 @@ const Header = ({slogan}) => {
          <div class="container flex justify-center mx-auto ">
                      <div className="gallery-head mx-auto mt-8">
                 <h2 className='text-3xl font-bold '>{slogan}</h2>
-                <div className="divider"></div>
+                <div className="divider before:bg-gray-900 after:bg-gray-900 mb-10"></div>
                 </div>
                 </div>
     );

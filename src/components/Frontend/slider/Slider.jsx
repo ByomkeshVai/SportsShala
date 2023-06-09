@@ -15,7 +15,7 @@ const Slider = () => {
                                 <h2 className='lg:text-6xl text-3xl font-bold'>Learn Your Favourite Sports On Free Time</h2>
                                 <div className='items-center align-center flex mt-8 gap-4'>
                                         <div className="btn1">
-                                            <button className="btn "><FcSportsMode size={28}/><Link to="/">  Start Learning</Link></button>
+                                            <button className="btn "><FcSportsMode size={28}/><Link to="/classes">  Start Learning</Link></button>
                                     </div>
                                         <div className="btn2">
                                             <button className="btn  btn-neutral"><RiCompassDiscoverLine size={28}/> Discover More</button>

@@ -23,9 +23,8 @@ const PopInstructor = () => {
 
     return (
         <div>
-            <Header slogan={"Meet Our Popular Instructor"}></Header>
-
-                <div class="w-full bg-gray-100 px-10 pt-10">
+            <div class="w-full bg-gray-100 px-10 py-10">
+                            <Header slogan={"Meet Our Popular Instructor"}></Header>
                     <div class="container mx-auto">
                     <div role="list" aria-label="Behind the scenes People " class="lg:flex md:flex sm:flex items-center xl:justify-center flex-wrap md:justify-center sm:justify-center lg:justify-center gap-5">
                         
