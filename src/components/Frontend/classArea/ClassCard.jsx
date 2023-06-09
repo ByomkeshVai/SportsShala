@@ -6,7 +6,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 
 const ClassCard = ({ allClass }) => {
     
-    const { image, name, price, seats, _id } = allClass;
+    const { image, name, price, seats, _id, enroll } = allClass;
     
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -39,8 +39,43 @@ const ClassCard = ({ allClass }) => {
 
 
 
-    return (
-         <div className='col-span-2 cursor-pointer group'>
+  return (
+    <>
+      {
+        seats == 0 ? (<div className='col-span-2 shadow-xl group'>
+      <div className='flex flex-col gap-2 w-full border border-2 bg-red-300 shadow-xl rounded-xl p-6'>
+        <div
+          className='
+            aspect-square 
+            w-full 
+            relative 
+            overflow-hidden 
+            rounded-xl
+          '
+        >
+          <img
+            className='
+              object-cover 
+              h-full 
+              w-full 
+              group-hover:scale-110 
+              transition
+            '
+            src={image}
+            alt='Class'
+          />
+        </div>
+         <div className='font-semibold text-lg text-center '>{name}</div>
+                <p className="text-gray-700 text-base mx-auto">Instructor: {allClass.instructor.name}</p>
+          <p className="text-gray-700 text-base mx-auto">Available Seats: {seats}</p>
+          <p className="text-gray-700 text-base mx-auto">Total Enrolled: {enroll}</p>
+                <p className="text-gray-700 text-base mx-auto">Price: {price}</p>
+                <button className="btn btn-sm btn-info mt-3 disabled:btn-error" disabled>Select Class</button>
+      </div>
+        </div>) :
+          
+          (
+            <div className='col-span-2 cursor-pointer group'>
       <div className='flex flex-col gap-2 w-full border border-2 shadow-xl rounded-xl p-6'>
         <div
           className='
@@ -65,11 +100,17 @@ const ClassCard = ({ allClass }) => {
         </div>
          <div className='font-semibold text-lg text-center '>{name}</div>
                 <p className="text-gray-700 text-base mx-auto">Instructor: {allClass.instructor.name}</p>
-        <p className="text-gray-700 text-base mx-auto">Available Seats: {seats}</p>
+          <p className="text-gray-700 text-base mx-auto">Available Seats: {seats}</p>
+          <p className="text-gray-700 text-base mx-auto">Total Enrolled: {enroll}</p>
                 <p className="text-gray-700 text-base mx-auto">Price: {price}</p>
                 <button className="btn btn-sm btn-info mt-3" onClick={() => handleAddToSelect(allClass)}>Select Class</button>
       </div>
     </div>
+    )
+    }
+    
+    </>
+         
     );
 };
 
