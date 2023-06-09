@@ -30,31 +30,7 @@ const ClassesFR = () => {
       .catch(err => console.log(err))
   }, [category])
 
-
-
-//     const { data: classes = [] } = useQuery(['classes'], async () => {
-//             const res = await axiosSecure.get('/classes')
-//             return res.data;
-//     })
-
-
-//      useEffect(() => {
-//    setLoading(true)
-//         if (category) {
-//             const filtered = classes.filter(data => data.category === category)
-//             setAllClass(filtered)
-//         }
-//         else {
-//             setLoading(false)
-//           setAllClass(data)
-//         }
-//         setLoading(false)
-//      }, [category])
-    
-    
-//         console.log(allClass);
-
-    
+  
       if (loading) {
     return <Loader />
   }

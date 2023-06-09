@@ -17,9 +17,7 @@ import IDashboard from './../components/Instructor/Dashboard/Dashboard';
 import AddClass from './../components/Instructor/Dashboard/AddClass';
 import MyClass from './../components/Instructor/Dashboard/MyClass';
 import DetailsInstructor from '../components/Frontend/DetailsInstructor/DetailsInstructor'
-import ClassesFR from '../components/Frontend/classArea/ClassesFR'
 import ClassArea from '../components/Frontend/classArea/ClassArea'
-import StudentPayment from '../components/Student/Dashboard/StudentPayment'
 import ErrorPage from '../layouts/ErrorPage'
 
 

@@ -3,8 +3,12 @@ import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../providers/AuthProvider';
+import useAdmin from '../../../hooks/useAdmin';
 
 const ClassCard = ({ allClass }) => {
+
+  const [isAdmin] = useAdmin();
+
     
     const { image, name, price, seats, _id, enroll } = allClass;
     
@@ -103,7 +107,7 @@ const ClassCard = ({ allClass }) => {
           <p className="text-gray-700 text-base mx-auto">Available Seats: {seats}</p>
           <p className="text-gray-700 text-base mx-auto">Total Enrolled: {enroll}</p>
                 <p className="text-gray-700 text-base mx-auto">Price: {price}</p>
-                <button className="btn btn-sm btn-info mt-3" onClick={() => handleAddToSelect(allClass)}>Select Class</button>
+                <button className="btn btn-sm btn-info mt-3" disabled={isAdmin} onClick={() => handleAddToSelect(allClass)}>Select Class</button>
       </div>
     </div>
     )
