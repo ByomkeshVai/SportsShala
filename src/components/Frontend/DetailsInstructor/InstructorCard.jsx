@@ -1,7 +1,48 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import useAdmin from '../../../hooks/useAdmin';
+import { useContext } from 'react';
+import { AuthContext } from '../../../providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
-const InstructorCard = ({instructorsClass}) => {
+const InstructorCard = ({ instructorsClass, user }) => {
+
+  const [isAdmin] = useAdmin();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+
+  const { image, name, price, seats, _id, enroll } = instructorsClass;
+
+
+
+
+   const handleAddToSelect = instructorsClass => {
+        if(user && user.email){
+          const selectItem = { selectItemId: _id, name, image, price, student_name: user.name, email: user.email, instructor: instructorsClass.instructor.email, status: "unpaid" }
+            fetch(`${import.meta.env.VITE_API_URL}/select`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`,
+                },
+                body: JSON.stringify(selectItem)
+            })
+           .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                   toast.success('Class Saved, Check Your Dashboard')
+                                   
+                                }
+                            })
+        }
+        else{
+            navigate('/login', {state: {from: location}})
+
+        }
+    }
+
+
     return (
         
         <div className='col-span-2 cursor-pointer group shadow-xl border border-2 p-8 rounded-xl'>
@@ -39,7 +80,7 @@ const InstructorCard = ({instructorsClass}) => {
                 <div className='font-semibold text-lg text-center '>Category: {instructorsClass.category}</div>
     
                     <div className='font-semibold text-center'>Price: $ {instructorsClass.price}</div>
-                    <button className="btn btn-sm btn-info mt-3">Learn More</button>
+                    <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || instructorsClass.instructor.email == user.email} onClick={() => handleAddToSelect(instructorsClass)}>Select Class</button>
       </div>
     </div>
     );

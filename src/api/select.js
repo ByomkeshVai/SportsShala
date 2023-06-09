@@ -31,6 +31,21 @@ export const updateStatus = async (id, status) => {
 }
 
 
+// update Enrolled status
+export const setSelect = async (selectItem) => {
+  const response = await fetch(`${import.meta.env.VITE_API_URL}/select`, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json',
+                    authorization: `Bearer ${localStorage.getItem('access-token')}`,
+                },
+                body: JSON.stringify(selectItem)
+            })
+  const data = await response.json()
+  return data
+}
+
+
 
 
 // update seats
