@@ -108,7 +108,7 @@ const ClassCard = ({ allClass }) => {
           <p className="text-gray-700 text-base mx-auto">Available Seats: {seats}</p>
           <p className="text-gray-700 text-base mx-auto">Total Enrolled: {enroll}</p>
                 <p className="text-gray-700 text-base mx-auto">Price: {price}</p>
-                <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || allClass.instructor.email == user.email} onClick={() => handleAddToSelect(allClass)}>Select Class</button>
+                <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || allClass?.instructor.email == user?.email} onClick={() => handleAddToSelect(allClass)}>Select Class</button>
       </div>
     </div>
     )

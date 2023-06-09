@@ -76,11 +76,11 @@ const InstructorCard = ({ instructorsClass, user }) => {
           >
           </div>
         </div>
-                <div className='font-semibold text-lg text-center '>Available: {instructorsClass.seats}</div>
-                <div className='font-semibold text-lg text-center '>Category: {instructorsClass.category}</div>
+                <div className='font-semibold text-lg text-center '>Available: {instructorsClass?.seats}</div>
+                <div className='font-semibold text-lg text-center '>Category: {instructorsClass?.category}</div>
     
-                    <div className='font-semibold text-center'>Price: $ {instructorsClass.price}</div>
-                    <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || instructorsClass.instructor.email == user.email} onClick={() => handleAddToSelect(instructorsClass)}>Select Class</button>
+                    <div className='font-semibold text-center'>Price: $ {instructorsClass?.price}</div>
+                    <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || instructorsClass?.instructor.email == user?.email} onClick={() => handleAddToSelect(instructorsClass)}>Select Class</button>
       </div>
     </div>
     );
