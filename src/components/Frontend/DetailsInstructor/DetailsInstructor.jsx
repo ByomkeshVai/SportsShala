@@ -23,6 +23,8 @@ const DetailsInstructor = () => {
       return res.data
       },
   })
+
+  console.log(instructorsClass);
    
 
     return (
