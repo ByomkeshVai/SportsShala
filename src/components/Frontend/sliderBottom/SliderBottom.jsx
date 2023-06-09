@@ -9,7 +9,7 @@ import { AiOutlineFileProtect } from 'react-icons/Ai';
 const SliderBottom = () => {
     return (
          <div className='max-w-screen-xl mx-auto rounded-xl mt-[-70px] absolute bottom-0 left-0 bg-slate-50 relative center mx-auto'>
-            <div className="main p-8 rounded-xl  flex gap-6 shadow-lg shadow-gray-500/50  justify-items-center items-center">
+            <div className="main p-8 rounded-xl lg:flex gap-6 shadow-lg shadow-gray-500/50  justify-items-center items-center">
                  <div className="text1 mx-auto" >
                     <div className="student flex items-center gap-4">
                         <div className="logo">
