@@ -20,12 +20,14 @@ import DetailsInstructor from '../components/Frontend/DetailsInstructor/DetailsI
 import ClassesFR from '../components/Frontend/classArea/ClassesFR'
 import ClassArea from '../components/Frontend/classArea/ClassArea'
 import StudentPayment from '../components/Student/Dashboard/StudentPayment'
+import ErrorPage from '../layouts/ErrorPage'
 
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <Main />,
+    errorElement: <ErrorPage />,
     children: [
     {
         path: '/',
@@ -59,6 +61,7 @@ export const router = createBrowserRouter([
     element: (
         <ADashboard />
     ),
+    errorElement: <ErrorPage />,
     children: [
       { path: '/admin/dashboard/classes', element: <ManageClass /> },
       { path: '/admin/dashboard/users', element: <ManageInstructor /> },
@@ -69,7 +72,8 @@ export const router = createBrowserRouter([
     path: '/instructor/dashboard',
     element: (
         <IDashboard />
-    ),
+     ),
+    errorElement: <ErrorPage />,
     children: [
       { path: '/instructor/dashboard/classes/', element: <AddClass /> },
       { path: '/instructor/dashboard/myclass', element: <MyClass /> },
@@ -80,7 +84,8 @@ export const router = createBrowserRouter([
     path: '/student/dashboard',
     element: (
         <SDashboard />
-    ),
+      ),
+    errorElement: <ErrorPage />,
     children: [
       { path: '/student/dashboard/classes/', element: <SelectedClass /> },
       { path: '/student/dashboard/enrolled', element: <EnrolledClass /> },
