@@ -15,6 +15,7 @@ import performance from '../../../assets/academic/performance.json'
 import { Tab, Tabs, TabList, TabPanel } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Header from '../shared/Header';
+import { Fade } from 'react-awesome-reveal';
 
 const Academic = () => {
     return (
@@ -24,7 +25,7 @@ const Academic = () => {
                 <div className="headarea">
                       <div class="container flex justify-center mx-auto p-6 text-center">
                      <div className="gallery-head mx-auto mt-8">
-                    <h2 className='text-3xl font-bold text-slate-50'>Our Academic Program Include</h2>
+                      <Fade delay={1e3} cascade damping={1e-1}><h2 className='text-3xl font-bold text-slate-50'>Our Academic Program Include</h2></Fade>
                     <div className="divider before:bg-slate-50 after:bg-slate-50 mb-10"></div>
                     </div>
                     </div>

@@ -19,6 +19,9 @@ import MyClass from './../components/Instructor/Dashboard/MyClass';
 import DetailsInstructor from '../components/Frontend/DetailsInstructor/DetailsInstructor'
 import ClassArea from '../components/Frontend/classArea/ClassArea'
 import ErrorPage from '../layouts/ErrorPage'
+import AdminRoute from './AdminRoute'
+import InstructorRoute from './InstructorRoute'
+import PrivateRoute from './PrivateRoute'
 
 
 export const router = createBrowserRouter([
@@ -52,41 +55,42 @@ export const router = createBrowserRouter([
         element: <DetailsInstructor></DetailsInstructor>,
         loader: ({params}) => fetch(`import.meta.env.VITE_API_URL/instructor/classes/${params.email}`)
       },
+
     ]
   },
   {
     path: '/admin/dashboard',
     element: (
-        <ADashboard />
+        <AdminRoute><ADashboard /></AdminRoute>
     ),
     errorElement: <ErrorPage />,
     children: [
-      { path: '/admin/dashboard/classes', element: <ManageClass /> },
-      { path: '/admin/dashboard/users', element: <ManageInstructor /> },
+      { path: '/admin/dashboard/classes', element:  <AdminRoute><ManageClass /></AdminRoute> },
+      { path: '/admin/dashboard/users', element: <AdminRoute><ManageInstructor /></AdminRoute> },
 
     ],
   },
    {
     path: '/instructor/dashboard',
     element: (
-        <IDashboard />
+        <InstructorRoute><IDashboard /></InstructorRoute>
      ),
     errorElement: <ErrorPage />,
      children: [
-      { path: '/instructor/dashboard/classes/', element: <AddClass /> },
-      { path: '/instructor/dashboard/myclass', element: <MyClass /> },
+      { path: '/instructor/dashboard/classes/', element: <InstructorRoute><AddClass /></InstructorRoute> },
+      { path: '/instructor/dashboard/myclass', element: <InstructorRoute><MyClass /></InstructorRoute> },
 
     ],
   },
     {
     path: '/student/dashboard',
     element: (
-        <SDashboard />
+        <PrivateRoute><SDashboard /></PrivateRoute>
       ),
     errorElement: <ErrorPage />,
     children: [
-      { path: '/student/dashboard/classes/', element: <SelectedClass /> },
-      { path: '/student/dashboard/enrolled', element: <EnrolledClass /> },
+      { path: '/student/dashboard/classes/', element: <PrivateRoute><SelectedClass /></PrivateRoute> },
+      { path: '/student/dashboard/enrolled', element: <PrivateRoute><EnrolledClass /></PrivateRoute> },
 
     ],
   },
