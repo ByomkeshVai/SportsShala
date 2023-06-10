@@ -5,8 +5,9 @@ import logo from '../../../assets/images/logo.png'
 import useAdmin from './../../../hooks/useAdmin';
 import useInstructor from '../../../hooks/useInstructor';
 import useStudent from '../../../hooks/useStudent';
+import { RiSunLine, RiMoonLine } from 'react-icons/Ri';
 
-const Navbar = () => {
+const Navbar = ({toggleDarkMode, darkMode}) => {
   const { user, logOut } = useContext(AuthContext)
   const [isAdmin] = useAdmin();
   const [isInstructor] = useInstructor();
@@ -17,6 +18,8 @@ const Navbar = () => {
             .then()
             .catch(error => console.log(error));
   }
+
+  const Icon = darkMode ? RiSunLine : RiMoonLine;
   
   const navbar = <>
 
@@ -45,7 +48,7 @@ const Navbar = () => {
     <>
      <li className='text-lg  hover:text-blue-900'><Link to="/">Home</Link></li>
           <li className='text-lg hover:text-blue-900'><Link to="/instructor">Instructor</Link></li>
-      <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
+              <li className='text-lg  hover:text-blue-900'><Link to="/classes">Classes</Link></li>
     
   </>
     }
@@ -85,7 +88,11 @@ const Navbar = () => {
     </ul>
           </div>
           
-  <div className="navbar-end">
+          <div className="navbar-end">
+          <button className=""
+            onClick={toggleDarkMode}>
+                <Icon size={22} />
+          </button>
                {
                         user &&
             
