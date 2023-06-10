@@ -38,9 +38,9 @@ const FrontSlider = () => {
                 <Swiper
                     breakpoints={{
         320: { slidesPerView: 1, spaceBetween: 80 },
-        480: { slidesPerView: 1, spaceBetween: 150 },
+        480: { slidesPerView: 1, spaceBetween: 50 },
         768: { slidesPerView: 2, spaceBetween: 50 },
-        1024: { slidesPerView: 4, spaceBetween: 150 },
+        1024: { slidesPerView: 4, spaceBetween: 20 },
       }}
                     modules={[Autoplay]}
         slidesPerView={4}
