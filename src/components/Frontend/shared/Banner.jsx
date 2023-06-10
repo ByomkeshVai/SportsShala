@@ -1,4 +1,5 @@
 import React from 'react';
+import { Slide } from 'react-awesome-reveal';
 
 const Banner = ({title}) => {
     return (
@@ -8,7 +9,7 @@ const Banner = ({title}) => {
                             <div role="listitem" class="xl:w-1/3 sm:w-3/4 md:w-2/5 relative mt-16 mb-32 sm:mb-24 xl:max-w-sm lg:w-2/5">
                                 <div class="rounded overflow-hidden shadow-md bg-white">
                                     <div class="px-6 py-6">
-                            <h1 class="font-bold text-3xl text-center mb-1">{title }</h1>
+                           <h1 class="font-bold text-3xl text-center mb-1"> <Slide>{title }</Slide></h1>
                                     </div>
                                 </div>
                                 </div>
