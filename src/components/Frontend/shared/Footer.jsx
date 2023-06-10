@@ -6,10 +6,10 @@ const Footer = () => {
     return (
     <footer className="w-full text-gray-700 bg-gray-100 body-font">
         <div
-            className="container flex flex-col flex-wrap px-5 py-24 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
+            className="container flex flex-col flex-wrap px-5 lg:py-24 py-6 mx-auto md:items-center lg:items-start md:flex-row md:flex-no-wrap">
             <div className="flex-shrink-0 w-64 mx-auto text-center md:mx-0 md:text-left">
-                <Link to='/' className="flex items-center justify-center font-medium text-gray-900 title-font md:justify-start">
-                   <img src={logo} alt="" className='h-16 w-16'/> <Link to="/">Sports Shala</Link>
+                <Link to='/' className="lg:flex lg:items-center justify-center font-medium text-gray-900 title-font md:justify-start">
+                   <img src={logo} alt="" className='mx-auto text-center lg:m-0 lg:text-left lg:h-16 lg:w-16 h-32 w-32'/> <Link to="/">Sports Shala</Link>
                 </Link>
                 <p className="mt-2 text-sm text-gray-500">Learn, Play and Professional!</p>
                 <div className="mt-4">
@@ -109,7 +109,7 @@ const Footer = () => {
         </div>
         <div className="bg-gray-300">
             <div className="container px-5 py-4 mx-auto">
-                <p className="text-sm text-gray-700 capitalize xl:text-center">©Byomkesh 2023 All rights reserved </p>
+                <p className="text-sm text-gray-700 capitalize xl:text-center text-center">©Byomkesh 2023 All rights reserved </p>
             </div>
         </div>
     </footer>
