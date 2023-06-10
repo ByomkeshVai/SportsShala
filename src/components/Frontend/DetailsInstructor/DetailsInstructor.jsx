@@ -6,6 +6,7 @@ import { useLoaderData, useParams } from 'react-router-dom';
 import Heading from '../shared/Heading';
 import InstructorCard from './InstructorCard';
 import Header from '../shared/Header';
+import { Helmet } from 'react-helmet';
 
 const DetailsInstructor = () => {
 
@@ -27,7 +28,8 @@ const DetailsInstructor = () => {
    
 
     return (
-        <div className='max-w-screen-xl mx-auto '>
+      <div className='max-w-screen-xl mx-auto '>
+      
             {
                 instructorsClass?.slice(0, 1).map((ins) => <>
                 <div class="w-full bg-gray-100 px-10 pt-10 mx-auto">
@@ -45,7 +47,10 @@ const DetailsInstructor = () => {
                                             <h1 class="font-bold text-xl text-center mb-1">Total Classes: {instructorsClass.length}</h1>
                                     </div>
                                 </div>
-                                </div>
+                        </div>
+                          <Helmet>
+                      <title>Sports Shala - {ins.name}</title>
+                    </Helmet>
                                 
                         </div>
                     </div>
@@ -60,6 +65,7 @@ const DetailsInstructor = () => {
           {instructorsClass.map((instructorsClass, index) => (
             <InstructorCard key={index} instructorsClass={instructorsClass} user={ user} />
           ))}
+            
         </div>
       ) : (
         <div className='min-h-[calc(100vh-300px)] flex items-center justify-center'>
@@ -68,7 +74,8 @@ const DetailsInstructor = () => {
             subtitle='Select Other Instructor.'
             center={true}
           />
-        </div>
+            </div>
+            
       )}
         </div>
     );

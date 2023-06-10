@@ -16,7 +16,6 @@ const InstructorCard = ({ instructorsClass, user }) => {
 
 
 
-
    const handleAddToSelect = instructorsClass => {
         if(user && user.email){
           const selectItem = { selectItemId: _id, name, image, price, student_name: user.name, email: user.email, instructor: instructorsClass.instructor.email, status: "unpaid" }
@@ -43,10 +42,12 @@ const InstructorCard = ({ instructorsClass, user }) => {
     }
 
 
-    return (
-        
-        <div className='col-span-2 cursor-pointer group shadow-xl border border-2 p-8 rounded-xl'>
-      <div className='flex flex-col gap-3 w-full '>
+  return (
+
+     <>
+      {
+        seats == 0 ? (<div className='col-span-2 shadow-xl group'>
+      <div className='flex flex-col gap-2 w-full border border-2 bg-red-300 shadow-xl rounded-xl p-6 pointer-default'>
         <div
           className='
             aspect-square 
@@ -64,26 +65,54 @@ const InstructorCard = ({ instructorsClass, user }) => {
               group-hover:scale-110 
               transition
             '
-            src={instructorsClass.image}
+            src={image}
             alt='Class'
           />
-          <div
-            className='
-            absolute
-            top-3
-            right-3
-          '
-          >
-          </div>
         </div>
-                <div className='font-semibold text-lg text-center '>Available: {instructorsClass?.seats}</div>
-                <div className='font-semibold text-lg text-center '>Category: {instructorsClass?.category}</div>
-    
-                    <div className='font-semibold text-center'>Price: $ {instructorsClass?.price}</div>
-                    <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || instructorsClass?.instructor.email == user?.email} onClick={() => handleAddToSelect(instructorsClass)}>Select Class</button>
+         <div className='font-semibold text-lg text-center '>{instructorsClass?.name}</div>
+          <p className="text-gray-700 text-base mx-auto">Available Seats: {instructorsClass?.seats}</p>
+          <p className="text-gray-700 text-base mx-auto">Total Enrolled: {instructorsClass?.enroll}</p>
+                <p className="text-gray-700 text-base mx-auto">Price: {instructorsClass?.price}</p>
+                <button className="btn btn-sm btn-info mt-3 disabled:btn-error" disabled>Select Class</button>
+      </div>
+        </div>) :
+          
+          (
+            <div className='col-span-2 cursor-pointer group'>
+      <div className='flex flex-col gap-2 w-full border border-2 shadow-xl rounded-xl p-6'>
+        <div
+          className='
+            aspect-square 
+            w-full 
+            relative 
+            overflow-hidden 
+            rounded-xl
+          '
+        >
+          <img
+            className='
+              object-cover 
+              h-full 
+              w-full 
+              group-hover:scale-110 
+              transition
+            '
+            src={image}
+            alt='Class'
+          />
+        </div>
+         <div className='font-semibold text-lg text-center '>{instructorsClass?.name}</div>
+          <p className="text-gray-700 text-base mx-auto">Available Seats: {instructorsClass?.seats}</p>
+          <p className="text-gray-700 text-base mx-auto">Total Enrolled: {instructorsClass?.enroll}</p>
+                <p className="text-gray-700 text-base mx-auto">Price: {instructorsClass?.price}</p>
+                <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || instructorsClass?.instructor.email == user?.email} onClick={() => handleAddToSelect(allClass)}>Select Class</button>
       </div>
     </div>
-    );
+    )
+    }
+    
+    </>
+  )
 };
 
 export default InstructorCard;
