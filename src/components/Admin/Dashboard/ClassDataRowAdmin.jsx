@@ -9,7 +9,6 @@ const ClassDataRowAdmin = ({ classes, refetch }) => {
     let [isOpen, setIsOpen] = useState(false)
     let [status, setStatus] = useState(" ")
     let [isEditModalOpen, setIsEditModalOpen] = useState(false)
-     const [buttonDisabled, setButtonDisabled] = useState('Approved' || 'Denied');
 
 
 

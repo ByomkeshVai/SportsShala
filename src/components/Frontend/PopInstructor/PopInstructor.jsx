@@ -14,12 +14,14 @@ const PopInstructor = () => {
     enabled: !loading,
     queryFn: async () => {
       const res = await axiosSecure(
-        "/all/instructors"
+        "/enroll-stats"
       )
       return res.data
       },
     
   })
+
+
 
     return (
         <div>

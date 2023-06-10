@@ -105,7 +105,7 @@ const InstructorCard = ({ instructorsClass, user }) => {
           <p className="text-gray-700 text-base mx-auto">Available Seats: {instructorsClass?.seats}</p>
           <p className="text-gray-700 text-base mx-auto">Total Enrolled: {instructorsClass?.enroll}</p>
                 <p className="text-gray-700 text-base mx-auto">Price: {instructorsClass?.price}</p>
-                <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || instructorsClass?.instructor.email == user?.email} onClick={() => handleAddToSelect(allClass)}>Select Class</button>
+                <button className="btn btn-sm btn-info mt-3" disabled={isAdmin || instructorsClass?.instructor.email == user?.email} onClick={() => handleAddToSelect(instructorsClass)}>Select Class</button>
       </div>
     </div>
     )
