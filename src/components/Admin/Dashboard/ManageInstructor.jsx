@@ -6,6 +6,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import { useContext } from 'react';
 import useAxiosSecure from '../../../hooks/useAxiosSecure';
 import EmptyState from '../../Frontend/shared/EmptyState';
+import { Helmet } from 'react-helmet';
 
 const ManageInstructor = () => {
      const [axiosSecure] = useAxiosSecure()
@@ -21,7 +22,10 @@ const ManageInstructor = () => {
     },
   })
     return (
-          <>
+      <>
+        <Helmet>
+          <title>SportsShala - Manage Instructor</title>
+        </Helmet>  
       {users && Array.isArray(users) && users.length > 0 ? (
         <div className='container mx-auto px-4 sm:px-8'>
           <div className='py-8'>

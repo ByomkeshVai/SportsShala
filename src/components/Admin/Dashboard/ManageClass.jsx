@@ -4,6 +4,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import ClassDataRowAdmin from './ClassDataRowAdmin';
 import EmptyState from '../../Frontend/shared/EmptyState';
+import { Helmet } from 'react-helmet';
 
 const ManageClass = () => {
      const [axiosSecure] = useAxiosSecure()
@@ -20,7 +21,10 @@ const ManageClass = () => {
     },
   })
     return (
-         <>
+      <>
+        <Helmet>
+          <title>SportsShala - Manage Class</title>
+        </Helmet>  
       {classes && Array.isArray(classes) && classes.length > 0 ? (
         <div className='container mx-auto px-4 sm:px-8'>
           <div className='py-8'>

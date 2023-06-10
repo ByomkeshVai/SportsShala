@@ -9,6 +9,7 @@ import { useQuery } from '@tanstack/react-query';
 import { useState } from 'react';
 import StudentPayment from './StudentPayment';
 import { Link } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 const SelectedClass = () => {
     const { user, loading } = useContext(AuthContext);
@@ -25,7 +26,10 @@ const SelectedClass = () => {
     
 
     return (
-          <>
+      <>
+        <Helmet>
+          <title>SportsShala - Selected Class</title>
+        </Helmet>  
       {select && Array.isArray(select) && select.length > 0 ? (
         <div className='container mx-auto px-4 sm:px-8'>
           <div className='py-8'>

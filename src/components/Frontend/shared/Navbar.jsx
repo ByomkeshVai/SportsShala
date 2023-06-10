@@ -89,7 +89,7 @@ const Navbar = ({toggleDarkMode, darkMode}) => {
           </div>
           
           <div className="navbar-end">
-          <button className=""
+          <button className="mr-6"
             onClick={toggleDarkMode}>
                 <Icon size={22} />
           </button>

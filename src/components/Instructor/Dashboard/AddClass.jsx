@@ -7,6 +7,7 @@ import { imageUpload } from './../../../api/utlits';
 import { addClassData } from '../../../api/class';
 import { useContext } from 'react';
 import { AuthContext } from './../../../providers/AuthProvider';
+import { Helmet } from 'react-helmet';
 
 const AddClass = () => {
      const navigate = useNavigate()
@@ -65,7 +66,10 @@ const AddClass = () => {
   }
 
     return (
-        <div className=''>
+      <div className=''>
+        <Helmet>
+          <title>SportsShala - Add Classes</title>
+        </Helmet>  
             <AddClassForm
              handleSubmit={handleSubmit}
         loading={loading}
