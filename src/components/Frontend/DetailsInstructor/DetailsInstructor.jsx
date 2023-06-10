@@ -39,7 +39,7 @@ const DetailsInstructor = () => {
                                 <div class="rounded overflow-hidden shadow-md bg-white">
                                     <div class="absolute -mt-20 w-full flex justify-center">
                                         <div class="h-32 w-32">
-                                            <img src={ins.image} alt="Display Picture of Andres Berlin" role="img" class="rounded-full object-cover h-full w-full shadow-md" />
+                                            <img src={ins.image} alt="Display Picture Instructor" role="img" class="rounded-full object-cover h-full w-full shadow-md" />
                                         </div>
                                     </div>
                                     <div class="px-6 mt-16">

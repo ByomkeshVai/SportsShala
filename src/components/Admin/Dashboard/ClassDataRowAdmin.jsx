@@ -9,11 +9,9 @@ const ClassDataRowAdmin = ({ classes, refetch }) => {
     let [isOpen, setIsOpen] = useState(false)
     let [status, setStatus] = useState(" ")
     let [isEditModalOpen, setIsEditModalOpen] = useState(false)
-    const [isButtonDisabled, setIsButtonDisabled] = useState(false);
+     const [buttonDisabled, setButtonDisabled] = useState('Approved' || 'Denied');
 
-  function onDisable() {
-  setIsButtonDisabled(true)
-}
+
 
   function openModal() {
     setIsOpen(true)
@@ -71,15 +69,15 @@ const ClassDataRowAdmin = ({ classes, refetch }) => {
         <p className='text-gray-900 whitespace-no-wrap'>{classes.instructor.email}</p>
             </td>
 <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <span
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight'
+        <button disabled={classes?.status == 'Approved' || classes?.status == 'Denied'}
+          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight disabled:text-gray-900'
         >
           <span
             aria-hidden='true'
             className={`absolute inset-0 ${classPending ? classActive : classDenied} rounded-full`}
           ></span>
-          <button className='relative' onClick={() => setIsEditModalOpen(true)} >{classes?.status}</button>
-        </span>
+          <span className='relative' onClick={() => setIsEditModalOpen(true)}>{classes?.status}</span>
+        </button>
         <StatusModal
           isOpen={isEditModalOpen}
           closeModal={() => setIsEditModalOpen(false)}
@@ -87,7 +85,7 @@ const ClassDataRowAdmin = ({ classes, refetch }) => {
           id={classes._id}
           refetch={refetch}
                     setIsEditModalOpen={setIsEditModalOpen}
-                    onDisable={onDisable}
+                  
         />
       </td>
 

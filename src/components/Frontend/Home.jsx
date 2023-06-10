@@ -12,7 +12,7 @@ const Home = () => {
     return (
         <div >
             <Helmet>
-                <title>Sports Shala - Summer Camp Sports School</title>
+                <title>Sports Shala - Summer Camp Sports School </title>
             </Helmet>
             <Slider></Slider>
             <SliderBottom></SliderBottom>

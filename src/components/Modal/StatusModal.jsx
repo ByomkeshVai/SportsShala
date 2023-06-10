@@ -9,7 +9,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 
-const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, onDisable }) => {
+const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id }) => {
 
     const [status, setStatus] = useState("")
          const navigate = useNavigate()
