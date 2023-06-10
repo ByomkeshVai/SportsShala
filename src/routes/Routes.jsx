@@ -19,7 +19,6 @@ import MyClass from './../components/Instructor/Dashboard/MyClass';
 import DetailsInstructor from '../components/Frontend/DetailsInstructor/DetailsInstructor'
 import ClassArea from '../components/Frontend/classArea/ClassArea'
 import ErrorPage from '../layouts/ErrorPage'
-import InsMain from '../components/Instructor/Dashboard/InsMain'
 
 
 export const router = createBrowserRouter([

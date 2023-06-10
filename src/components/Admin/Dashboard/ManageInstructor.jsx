@@ -21,6 +21,7 @@ const ManageInstructor = () => {
       return res.data
     },
   })
+
     return (
       <>
         <Helmet>

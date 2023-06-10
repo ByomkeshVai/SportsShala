@@ -8,7 +8,7 @@ import { Fragment } from 'react'
 import { toast } from 'react-hot-toast';
 import { UpdateRole } from '../../api/user';
 
-const RoleModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsButtonDisabled }) => {
+const RoleModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id }) => {
     
     const [role, setRole] = useState("")
          const navigate = useNavigate()
@@ -30,7 +30,6 @@ const RoleModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsButt
               navigate('/admin/dashboard/users')
              refetch()
             setIsEditModalOpen(false)
-            setIsButtonDisabled(true)
         } 
           })
           .catch(err => console.log(err))

@@ -51,7 +51,7 @@ const Signup = () => {
                 <title>Sports Shala - Register</title>
             </Helmet>
              <div className="">
-                <div className="hero-content flex-col lg:flex-row-reverse">
+                <div className="hero-content flex-col lg:flex-row-reverse mx-auto text-center">
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
