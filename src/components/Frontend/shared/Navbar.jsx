@@ -57,7 +57,7 @@ const Navbar = () => {
     
     return (
         <div className='max-w-screen-xl mx-auto relative z-40 '>
-            <div className="navbar mb-4">
+            <div className="navbar lg:mb-4">
   <div className="navbar-start">
     <div className="dropdown">
       <label tabIndex={0} className="btn btn-ghost lg:hidden">
@@ -67,19 +67,19 @@ const Navbar = () => {
         {navbar}
       </ul>
     </div>
-            <div className="logoarea">
+            <div className="logoarea mt-8 lg:m-0">
                <Link to="/">
-              <div className="tag-area flex items-center">
-                <img src={logo} alt="" className='lg:h-24 lg:w-24 h-6' />
-                <div className="div">
+              <div className="tag-area lg:flex lg:flex-row flex flex-col text-center items-center">
+                <img src={logo} alt="" className='lg:h-24 lg:w-24 h-16' />
+                <div className="lg:m-0  mt-[-12px]">
                   <h2 className='font-bold'>Sports Shala</h2>
-                  <p>Learn, Play and Professional</p>
+                  <p className='invisible lg:visible'>Learn, Play and Professional</p>
                 </div>
                 </div>
                 </Link>
             </div> 
   </div>
-  <div className="navbar-center hidden lg:flex">
+  <div className="navbar-center hidden lg:flex lg:navbar-end">
     <ul className="menu menu-horizontal px-1">
      {navbar}
     </ul>
