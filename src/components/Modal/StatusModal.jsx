@@ -9,7 +9,7 @@ import { AuthContext } from '../../providers/AuthProvider';
 import { toast } from 'react-hot-toast';
 
 
-const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsButtonDisabled }) => {
+const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, onDisable }) => {
 
     const [status, setStatus] = useState("")
          const navigate = useNavigate()
@@ -33,7 +33,7 @@ const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsBu
               navigate('/admin/dashboard/classes')
              refetch()
             setIsEditModalOpen(false)
-            setIsButtonDisabled(true)
+            onDisable(false)
         } 
           })
           .catch(err => console.log(err))
@@ -90,14 +90,14 @@ const StatusModal = ({ setIsEditModalOpen, isOpen, refetch, classes, id, setIsBu
                 <div className='mt-2 flex mt-2 justify-around'>
                   <button
                     type='submit'
-                    className='inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2' 
-                    onClick={() => setStatus("Approved")}
+                    className='disable:bg-text-600 inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm font-medium text-green-900 hover:bg-green-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-green-500 focus-visible:ring-offset-2' 
+                    onClick={() => setStatus("Approved")} 
                   >
                     Approved
                                     </button>
                                      <button
                     type='submit'
-                    className='inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
+                    className='disable:bg-text-600 inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
                     onClick={() => setStatus("Denied")} 
                   >
                     Denied

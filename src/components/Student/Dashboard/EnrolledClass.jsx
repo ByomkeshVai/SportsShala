@@ -4,6 +4,7 @@ import { AuthContext } from '../../../providers/AuthProvider';
 import { useQuery } from '@tanstack/react-query';
 import EmptyState from '../../Frontend/shared/EmptyState';
 import StudentDataRow from './StudentDataRow';
+import { Helmet } from 'react-helmet';
 
 const EnrolledClass = () => {
          const [axiosSecure] = useAxiosSecure()
@@ -23,7 +24,10 @@ const EnrolledClass = () => {
     
     
     return (
-         <>
+      <>
+        <Helmet>
+          <title>SportsShala - Enrolled Classes</title>
+        </Helmet> 
       {enroll && Array.isArray(enroll) && enroll.length > 0 ? (
         <div className='container mx-auto px-4 sm:px-8'>
           <div className='py-8'>

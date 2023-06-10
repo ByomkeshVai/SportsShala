@@ -71,7 +71,7 @@ const SelectDataRow = ({ select, refetch, user }) => {
             aria-hidden='true'
             className="absolute inset-0 bg-blue-600 rounded-full"
           ></span>
-                                <button className='relative' onClick={() => setIsEditModalOpen(true)}>{ select?.status}</button>
+                                <button className='relative' onClick={() => setIsEditModalOpen(true)}>Pay</button>
         </span>
        <StudentPayment
         isOpen={isEditModalOpen}

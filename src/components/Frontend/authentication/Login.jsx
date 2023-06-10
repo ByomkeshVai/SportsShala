@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import { saveUser } from '../../../api/auth';
 import { Helmet } from 'react-helmet';
-import { TbFidgetSpinner } from 'react-icons/tb'
+import { ImSpinner2 } from 'react-icons/Im'
 import { FcGoogle } from 'react-icons/fc'
 import { useState } from 'react';
 import { AiOutlineEye } from 'react-icons/Ai';
@@ -85,10 +85,10 @@ const Login = () => {
                             <div className="form-control mt-6">
                             <button
                             type='submit'
-                            className='bg-rose-500 w-full rounded-md py-3 text-white'
+                            className='bg-blue-900 w-full rounded-md py-3 text-white'
                             >
                             {loading ? (
-                                <TbFidgetSpinner className='m-auto animate-spin' size={24} />
+                                <ImSpinner2 className='m-auto animate-spin' size={24} />
                             ) : (
                                 'Continue'
                             )}
@@ -103,7 +103,7 @@ const Login = () => {
                                 <p>Continue with Google</p>
                                 </div>
                         </form>
-                        <p><small>Don't Have a Account <Link to="/register">Register</Link></small> Here</p>
+                        <p className='mb-6 text-center'><small>Don't Have a Account <Link to="/register" className='text-blue-900 font-bold'>Register</Link></small></p>
                     </div>
                 </div>
             </div>

@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from 'react-hot-toast';
 import { saveUser } from '../../../api/auth';
 import { Helmet } from 'react-helmet';
-import { TbFidgetSpinner } from 'react-icons/tb'
+import { ImSpinner2 } from 'react-icons/Im'
 import { AiOutlineEye } from 'react-icons/Ai';
 
 const Signup = () => {
@@ -99,17 +99,17 @@ const Signup = () => {
                             <div className="form-control mt-6">
                                <button
               type='submit'
-              className='bg-rose-500 w-full rounded-md py-3 text-white'
+              className='bg-blue-900 w-full rounded-md py-3 text-white'
             >
               {loading ? (
-                <TbFidgetSpinner className='m-auto animate-spin' size={24} />
+                <ImSpinner2 className='m-auto animate-spin' size={24} />
               ) : (
                 'Continue'
               )}
             </button>
                             </div>
                         </form>
-                        <p><small>Already have an account <Link to="/login">Login</Link></small></p>
+                        <p className='mb-6 text-center'><small>Already have an account <Link to="/login" className='text-blue-900 font-bold'>Login</Link></small></p>
                     </div>
                 </div>
             </div>
