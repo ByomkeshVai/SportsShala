@@ -8,10 +8,10 @@ const SingleInstructor = ({instructors}) => {
                             <img src={instructors?.photo} alt="Shoes" className="mx-auto object-cover h-56 w-64 rounded-xl  " />
                         </figure>
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title mt-[-24px]">{instructors.name}</h2>
-                            <h2 className="">Our Senior Instructor</h2>
+                <h2 className="card-title mt-[-24px]">{instructors?.name}</h2>
+                <h3 className="">{instructors?.email}</h3>
                             <div className="card-actions">
-                            <button className="btn btn-sm btn-primary mt-3"><Link to={`/instructor/classes/${instructors.email}`}>Show Class</Link></button>
+                            <button className="btn btn-sm btn-primary mt-3"><Link to={`/instructor/classes/${instructors?.email}`}>Show Class</Link></button>
                             </div>
                         </div>
                         </div>

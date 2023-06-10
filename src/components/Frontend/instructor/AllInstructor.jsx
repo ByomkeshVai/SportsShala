@@ -61,7 +61,7 @@ const AllInstructor = () => {
             </div>
             ) : (
                 <EmptyState
-                    message='No Room Instructor available.'
+                    message='No Instructor Is available.'
                 />
             )}
                 </>

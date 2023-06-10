@@ -39,9 +39,10 @@ const Signup = () => {
                             .then(data => {
                                 if (data.insertedId) {
                                    toast.success('Signup Successful')
-                                   
                                 }
+                                
                             })
+
                     })
     };
 

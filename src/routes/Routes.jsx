@@ -22,6 +22,7 @@ import ErrorPage from '../layouts/ErrorPage'
 import AdminRoute from './AdminRoute'
 import InstructorRoute from './InstructorRoute'
 import PrivateRoute from './PrivateRoute'
+import StudentRoute from './StudentRoute'
 
 
 export const router = createBrowserRouter([
@@ -85,12 +86,20 @@ export const router = createBrowserRouter([
     {
     path: '/student/dashboard',
     element: (
-        <PrivateRoute><SDashboard /></PrivateRoute>
+        <StudentRoute><PrivateRoute><SDashboard /></PrivateRoute></StudentRoute>
       ),
     errorElement: <ErrorPage />,
     children: [
-      { path: '/student/dashboard/classes/', element: <PrivateRoute><SelectedClass /></PrivateRoute> },
-      { path: '/student/dashboard/enrolled', element: <PrivateRoute><EnrolledClass /></PrivateRoute> },
+      {
+        path: '/student/dashboard/classes/', element: <StudentRoute><PrivateRoute>
+          <SelectedClass />
+        </PrivateRoute></StudentRoute>
+      },
+      {
+        path: '/student/dashboard/enrolled', element: <StudentRoute><PrivateRoute>
+          <EnrolledClass />
+        </PrivateRoute></StudentRoute>
+      },
 
     ],
   },
