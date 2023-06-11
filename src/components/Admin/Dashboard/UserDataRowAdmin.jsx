@@ -31,11 +31,8 @@ const UserDataRowAdmin = ({ users, refetch }) => {
   }
   
   
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-  
   const handleChange = () => {
     setIsEditModalOpen(true)
-    setButtonDisabled(true);
   };
 
     return (
@@ -48,7 +45,7 @@ const UserDataRowAdmin = ({ users, refetch }) => {
         <p className='text-gray-900 whitespace-no-wrap'>{users?.email}</p>
       </td>
  <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <button disabled={user.email === users.email || buttonDisabled}
+        <button disabled={user.email === users.email }
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight disabled:text-gray-900'
         >
           <span

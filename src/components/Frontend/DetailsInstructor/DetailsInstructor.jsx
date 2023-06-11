@@ -50,7 +50,7 @@ const DetailsInstructor = () => {
                                 </div>
                         </div>
                           <Helmet>
-                      <title>Sports Shala - {ins.name}</title>
+                      <title>Sports Shala - {ins?.instructor.name}</title>
                     </Helmet>
                                 
                         </div>

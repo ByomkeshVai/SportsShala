@@ -4,12 +4,15 @@ import { deleteSelect } from '../../../api/select';
 import DeleteModal from '../../Modal/DeleteModal';
 import StudentPayment from './StudentPayment';
 import useAuth from '../../../hooks/useAuth';
+import { toast } from 'react-hot-toast';
 
 const SelectDataRow = ({ select, refetch, user }) => {
 
         let [isEditModalOpen, setIsEditModalOpen] = useState(false)
 
   let [isOpen, setIsOpen] = useState(false)
+
+  
 
 
   function openModal() {

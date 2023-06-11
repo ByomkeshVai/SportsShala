@@ -1,21 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useContext } from 'react';
 import { toast } from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import { AuthContext } from '../../../providers/AuthProvider';
+import AuthProvider, { AuthContext } from '../../../providers/AuthProvider';
 import useAdmin from '../../../hooks/useAdmin';
 import useAuth from '../../../hooks/useAuth';
+import useSelect from './../../../hooks/useSelect';
 
 const ClassCard = ({ allClass }) => {
 
   const [isAdmin] = useAdmin();
+  const [select] = useSelect()
 
-    
-    const { image, name, price, seats, _id, enroll } = allClass;
+
+  const { image, name, price, seats, _id, enroll } = allClass;
+
     
     const { user, loading } = useContext(AuthContext);
     const navigate = useNavigate();
-    const location = useLocation();
+  const location = useLocation();
+  
 
     const handleAddToSelect = allClass => {
         if(user && user.email){
@@ -32,7 +36,7 @@ const ClassCard = ({ allClass }) => {
                             .then(data => {
                                 if (data.insertedId) {
                                    toast.success('Class Saved, Check Your Dashboard')
-                                   
+                                  
                                 }
                             })
         }
