@@ -25,7 +25,6 @@ const CheckoutForm = ({ select, closeModal, selectInfo }) => {
       axiosSecure
         .post('/create-payment-intent', { price: select.price })
           .then(res => {
-            console.log(res.data.clientSecret)
           setClientSecret(res.data.clientSecret)
         })
     }
@@ -50,7 +49,6 @@ const CheckoutForm = ({ select, closeModal, selectInfo }) => {
     })
 
     if (error) {
-      console.log('error', error)
       setCardError(error.message)
     } else {
       setCardError('')
@@ -74,11 +72,9 @@ const CheckoutForm = ({ select, closeModal, selectInfo }) => {
       
 
       if (confirmError) {
-        console.log(confirmError);
       setCardError(confirmError.message)
       }
       
-      console.log('payment intent', paymentIntent)
       
       // save payment information to the server
        if (paymentIntent.status === 'succeeded') {
@@ -91,10 +87,8 @@ const CheckoutForm = ({ select, closeModal, selectInfo }) => {
             }
          axiosSecure.patch(`/select/${select._id}`, payment)
            .then(res => {
-             console.log(selectInfo.classId);
                      updateSeats(selectInfo.classId)
                       .then(data => {
-                      console.log(data)
                       })
                     setProcessing(false)
               const text = `Payment Successful!, TransactionId: ${paymentIntent.id}`

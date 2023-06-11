@@ -29,8 +29,6 @@ const UserDataRowAdmin = ({ users, refetch }) => {
           closeModal()
   }
   
-  console.log('from main' ,user);
-  console.log('from sub', users);
   
   const [buttonDisabled, setButtonDisabled] = useState(false);
   

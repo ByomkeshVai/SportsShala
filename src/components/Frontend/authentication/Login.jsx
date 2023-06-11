@@ -25,12 +25,10 @@ const Login = () => {
      const onSubmit = data => {
         signIn(data.email, data.password)
         .then(result => {
-            console.log(result.user)
             navigate(from, { replace: true })
         })
         .catch(err => {
             setLoading(false)
-            console.log(err.message)
             toast.error(err.message)
         })
     };
@@ -39,14 +37,12 @@ const Login = () => {
      const handleGoogleSignIn = () => {
     signInWithGoogle()
       .then(result => {
-        console.log(result.user)
         // save user to db
         saveUser(result.user)
         navigate(from, { replace: true })
       })
       .catch(err => {
         setLoading(false)
-        console.log(err.message)
         toast.error(err.message)
       })
   }
