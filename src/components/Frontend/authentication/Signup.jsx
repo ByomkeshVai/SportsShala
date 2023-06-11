@@ -95,7 +95,7 @@ const Signup = () => {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 20,
-                                    // pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
+                                    pattern: /(?=.*[A-Z])(?=.*[!@#$&*])(?=.*[0-9])(?=.*[a-z])/
                                 })} placeholder="password" className="input input-bordered" />
          <AiOutlineEye onClick={togglePassword} className='absolute right-10 bottom-40 top-80 cursor-pointer'></AiOutlineEye>
                                 {errors.password?.type === 'required' && <p className="text-red-600">Password is required</p>}
