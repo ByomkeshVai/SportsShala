@@ -29,6 +29,15 @@ const UserDataRowAdmin = ({ users, refetch }) => {
           closeModal()
   }
   
+  console.log('from main' ,user);
+  console.log('from sub', users);
+  
+  const [buttonDisabled, setButtonDisabled] = useState(false);
+  
+  const handleChange = () => {
+    setIsEditModalOpen(true)
+    setButtonDisabled(true);
+  };
 
     return (
         <tr>
@@ -40,14 +49,14 @@ const UserDataRowAdmin = ({ users, refetch }) => {
         <p className='text-gray-900 whitespace-no-wrap'>{users?.email}</p>
       </td>
  <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <button disabled={user.email === users.email}
+        <button disabled={user.email === users.email || buttonDisabled}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight disabled:text-gray-900'
         >
           <span
             aria-hidden='true'
             className="absolute inset-0 bg-blue-600 rounded-full "
           ></span>
-          <span className='relative' onClick={() => setIsEditModalOpen(true)} >{users?.role}</span>
+          <span className='relative' onClick={ handleChange} >{users?.role}</span>
         </button>
         <RoleModal
           isOpen={isEditModalOpen}
@@ -60,7 +69,7 @@ const UserDataRowAdmin = ({ users, refetch }) => {
       </td>
 
         <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
-        <button disabled={user.email === users.email}
+        <button disabled={user.email === users.email }
           onClick={openModal}
           className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-slate-50 leading-tight disabled:text-gray-900'
         >

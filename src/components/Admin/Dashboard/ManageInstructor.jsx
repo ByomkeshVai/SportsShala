@@ -69,6 +69,7 @@ const ManageInstructor = () => {
                           key={users?._id}
                           users={users}
                           refetch={refetch}
+                          
                         />
                       ))}
                   </tbody>
