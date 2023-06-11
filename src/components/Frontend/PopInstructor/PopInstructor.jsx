@@ -25,10 +25,10 @@ const PopInstructor = () => {
 
     return (
         <div>
-        <div class="w-full bg-gray-100 px-10 py-10">
+        <div class="bg-gray-100  py-10">
                       <Header slogan={"Meet Our Popular Instructor"}></Header>
                     <div class="container mx-auto">
-                    <div role="list" aria-label="Behind the scenes People " class="lg:flex lg:flex-row md:flex flex flex-col gap-7 items-center xl:justify-center flex-wrap md:justify-center sm:justify-center lg:justify-center lg:gap-5">
+                    <div role="list" aria-label="Behind the scenes People " className="grid grid-cols-1 gap-5 lg:gap-5 lg:grid-cols-6 mx-auto text-center align-center items-center xl:justify-center flex-wrap md:justify-center sm:justify-center lg:justify-center lg:gap-5">
                         
                             {
                 instructors?.slice(0, 6).map(instructors => (<SingleInstructor

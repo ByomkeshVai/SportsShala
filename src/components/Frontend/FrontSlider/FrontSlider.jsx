@@ -34,7 +34,7 @@ const FrontSlider = () => {
 
                 <Header slogan={"Learn Unlimited Popular Sports Lessions"}></Header>
             
-            <div className="border border-2 shadow-xl p-3 bg-gradient-to-l from-sky-800 to-indigo-900 p-8 rounded-xl shadow-xl">
+            <div className="border border-2 shadow-xl p-3 bg-gradient-to-l from-sky-800 to-indigo-900 py-8 rounded-xl shadow-xl">
                 <Swiper
                     breakpoints={{
         320: { slidesPerView: 1, spaceBetween: 80 },
@@ -60,8 +60,8 @@ const FrontSlider = () => {
                             <img src={sliderClass?.image} alt="Shoes" className="mx-auto object-cover h-56 w-64 rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
-                            <h2 className="card-title font-bold mt-[-24px]">{sliderClass?.name}</h2>
-                                    <p className='text-lg'><span className='font-bold text-gray-600 '>By:</span> {sliderClass?.instructor.name}</p>
+                            <h2 className="font-bold mt-[-24px]">{sliderClass?.name}</h2>
+                                    <p className='text-text-base'><span className='font-bold text-gray-600 '>By:</span> {sliderClass?.instructor.name}</p>
                                     <p className='text-lg text-gray-700 '>Enrolled: {sliderClass?.enroll}</p>
                             <div className="card-actions">
                             <button className="btn btn-sm btn-primary mt-3"> <Link to='/classes'>Show More</Link></button>
