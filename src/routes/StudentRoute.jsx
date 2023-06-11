@@ -5,7 +5,7 @@ import Loader from '../components/Frontend/shared/Loader';
 import useStudent from '../hooks/useStudent';
 
 
-const StudentRoute = () => {
+const StudentRoute = ({children} ) => {
    const { user, loading } = useAuth();
     const [isStudent, StudentLoading] = useStudent();
     const location = useLocation();

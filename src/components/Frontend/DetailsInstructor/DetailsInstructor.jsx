@@ -25,13 +25,14 @@ const DetailsInstructor = () => {
       },
   })
 
-   
+
 
     return (
       <div className='max-w-screen-xl mx-auto '>
       
             {
                 instructorsClass?.slice(0, 1).map((ins) => <>
+                
                 <div class="w-full bg-gray-100 px-10 pt-10 mx-auto">
                     <div class="container mx-auto">
                         <div role="list" aria-label="Behind the scenes People " class="lg:flex md:flex sm:flex items-center xl:justify-center flex-wrap md:justify-center sm:justify-center lg:justify-center">
@@ -39,11 +40,11 @@ const DetailsInstructor = () => {
                                 <div class="rounded overflow-hidden shadow-md bg-white">
                                     <div class="absolute -mt-20 w-full flex justify-center">
                                         <div class="h-32 w-32">
-                                            <img src={ins.image} alt="Display Picture Instructor" role="img" class="rounded-full object-cover h-full w-full shadow-md" />
+                                            <img src={ins?.instructor.image} alt="Display Picture Instructor" role="img" class="rounded-full object-cover h-full w-full shadow-md" />
                                         </div>
                                     </div>
                                     <div class="px-6 mt-16">
-                                            <h1 class="font-bold text-3xl text-center mb-1">{ins.name}</h1>
+                                            <h1 class="font-bold text-3xl text-center mb-1">{ins?.instructor.name}</h1>
                                             <h1 class="font-bold text-xl text-center mb-1">Total Classes: {instructorsClass.length}</h1>
                                     </div>
                                 </div>

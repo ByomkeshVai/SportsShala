@@ -9,9 +9,9 @@ const AddClassForm = ({
   uploadButtonText,
 }) => {
     return (
-        <div className='max-w-screen-xl mx-auto min-h-[calc(100vh-40px)] flex flex-col justify-center  text-gray-800 rounded-xl bg-gray-50'>
+        <div className='max-w-screen-xl mx-auto min-h-[calc(100vh-270px)] flex flex-col justify-center  text-gray-800 rounded-xl bg-gray-50'>
       <form onSubmit={handleSubmit}>
-        <div className='grid grid-cols-1 lg:grid-cols-2 gap-10 mx-auto'>
+        <div className='mx-auto lg:w-3/6 w-full'>
             <div className='space-y-6'>
               
  <div className='space-y-1 text-sm mx-auto'>
@@ -68,7 +68,7 @@ const AddClassForm = ({
                 </div>
               </div>
             </div>
-            <div className='flex justify-between gap-2'>
+            <div className='lg:flex lg:flex-row flex-col justify-between gap-2'>
               <div className='space-y-1 text-sm'>
                 <label htmlFor='price' className='block text-gray-600'>
                   Price

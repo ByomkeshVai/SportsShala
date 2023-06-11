@@ -57,7 +57,7 @@ const FrontSlider = () => {
                         <SwiperSlide>
                         <div className="card lg:w-64 w-full bg-base-100 shadow-xl lg:ml-6 hover:scale-110">
                         <figure className="px-2 pt-3">
-                            <img src={sliderClass?.image} alt="Shoes" className="mx-auto object-cover h-56 w-64 rounded-xl  " />
+                            <img src={sliderClass?.image} alt="Shoes" className="mx-auto object-cover h-56 w-64 rounded-xl" />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title font-bold mt-[-24px]">{sliderClass?.name}</h2>

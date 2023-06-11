@@ -47,7 +47,7 @@ const InstructorCard = ({ instructorsClass, user }) => {
      <>
       {
         seats == 0 ? (<div className='col-span-2 shadow-xl group'>
-      <div className='flex flex-col gap-2 w-full border border-2 bg-red-300 shadow-xl rounded-xl p-6 pointer-default'>
+      <div className='flex flex-col gap-2 w-full border border-2 bg-red-300 shadow-xl rounded-xl p-6 pointer-default h-96' >
         <div
           className='
             aspect-square 
@@ -79,7 +79,7 @@ const InstructorCard = ({ instructorsClass, user }) => {
           
           (
             <div className='col-span-2 cursor-pointer group'>
-      <div className='flex flex-col gap-2 w-full border border-2 shadow-xl rounded-xl p-6'>
+      <div className='flex flex-col gap-2 w-full border border-2 shadow-xl rounded-xl p-6 h-96'>
         <div
           className='
             aspect-square 
