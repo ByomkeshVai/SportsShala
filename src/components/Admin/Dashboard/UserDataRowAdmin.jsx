@@ -5,6 +5,7 @@ import DeleteModal from '../../Modal/DeleteModal';
 import RoleModal from '../../Modal/RoleModal';
 import { useContext } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
+import { toast } from 'react-hot-toast';
 
 const UserDataRowAdmin = ({ users, refetch }) => {
     let [isOpen, setIsOpen] = useState(false)
