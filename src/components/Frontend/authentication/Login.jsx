@@ -38,8 +38,27 @@ const Login = () => {
     signInWithGoogle()
       .then(result => {
         // save user to db
-        saveUser(result.user)
-        navigate(from, { replace: true })
+          navigate(from, { replace: true })
+                          const saveUser = { name: result.user.displayName, email: result.user.email, photo: result.user.photoURL, role: "student" }
+                          fetch(`${import.meta.env.VITE_API_URL}/users/${result.user.email}`, {
+                            method: 'PUT',
+                            headers: {
+                                    'content-type': 'application/json',
+                                    authorization: `Bearer ${localStorage.getItem('access-token')}`,
+                                },
+                            body: JSON.stringify(saveUser)
+                        })
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                   toast.success('Auth Successful')
+                                }
+                                
+                            })
+
+
+
+          
       })
       .catch(err => {
         setLoading(false)

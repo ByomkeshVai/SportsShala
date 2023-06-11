@@ -10,7 +10,7 @@ Sports Shala is a Application Based on Cricket Learning Where you can Be a instr
 * Responsive Design
 
 ## Package That I Used 
-TailwindCSS, DaisyUi, HeadlessUi, firebase, React-Router-Dom, Query String, lottie, awesome-reveal, awesome-slider, axios, helmet, hook-form, hot-toast, react-icons, simple-typewriter, react-spinners, react-tabs, sweetalert2, react-swiper, 
+TailwindCSS, DaisyUi, HeadlessUi, firebase, React-Router-Dom, Query String, lottie, awesome-reveal, awesome-slider, axios, helmet, hook-form, hot-toast, react-icons, simple-typewriter, react-spinners, react-tabs, sweetalert2, react-swiper
 
 ## Live Link Here
 [Sports Shala](https://sportsshala-b60ca.web.app/)

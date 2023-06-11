@@ -31,7 +31,7 @@ const Signup = () => {
           createUser(data.email, data.password)
              .then(result => {
                  const loggedUser = result.user;
-
+                    console.log(loggedUser);
                  updateUserProfile(data.name, data.photoURL)
                    navigate(from, { replace: true })
                 const saveUser = { name: data.name, email: data.email, photo: data.photoURL, role: "student" }
