@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import { AuthContext } from '../../../providers/AuthProvider';
 import { useForm } from "react-hook-form";
 import { Link, useNavigate } from "react-router-dom";
@@ -9,7 +9,8 @@ import { ImSpinner2 } from 'react-icons/Im'
 import { AiOutlineEye } from 'react-icons/Ai';
 
 const Signup = () => {
-    const { register, handleSubmit, reset, formState: { errors } } = useForm();
+    const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
+     const passwords = watch('password');
     const { createUser, updateUserProfile, loading, setLoading } = useContext(AuthContext);
     const navigate = useNavigate();
     const from = location.state?.from?.pathname || '/'
@@ -19,8 +20,15 @@ const Signup = () => {
          setPasswordShown(!passwordShown);
     };
 
-     const onSubmit = data => {
-         createUser(data.email, data.password)
+    const [loginError, setLoginError] = useState('');
+
+    const onSubmit = data => {
+        if (data.password !== data.confirmPassword) {
+            setLoginError('Passwords do not match');
+            return
+        }
+        
+          createUser(data.email, data.password)
              .then(result => {
                  const loggedUser = result.user;
                 console.log(loggedUser);
@@ -44,8 +52,11 @@ const Signup = () => {
                             })
 
                     })
+        
     };
 
+    
+    
     return (
         <div>
               <Helmet>
@@ -78,10 +89,9 @@ const Signup = () => {
                             </div>
                             <div className="form-control">
                                 <label className="label">
-                                    <span className="label-text">Password</span>
-                                    
+                                    <span className="label-text">Password</span>     
                                 </label>
-                                <input type={passwordShown ? "text" : "password"}  {...register("password", {
+                                <input name="password" type={passwordShown ? "text" : "password"}  {...register("password", {
                                     required: true,
                                     minLength: 6,
                                     maxLength: 20,
@@ -92,13 +102,32 @@ const Signup = () => {
                                 {errors.password?.type === 'minLength' && <p className="text-red-600">Password must be 6 characters</p>}
                                 {errors.password?.type === 'maxLength' && <p className="text-red-600">Password must be less than 20 characters</p>}
                                 {errors.password?.type === 'pattern' && <p className="text-red-600">Password must have one Uppercase one lower case, one number and one special character.</p>}
-                                 
+                               
+                            </div>
+
+
+<div className='form-control'>
+         <label className="label">
+                                    <span className="label-text">Confirm Password</span>     
+                                </label>
+        <input
+          type="password"
+          id="confirmPassword"
+                                    name="confirmPassword"
+                                placeholder="Confirm Password" className="input input-bordered"
+          {...register('confirmPassword', {
+            validate: (value) => value === passwords || 'Passwords do not match',
+          })}
+        />
+                                {errors.confirmPassword && <p className="text-red-600">{errors.confirmPassword.message}</p>}
+                                   {loginError && <p className="text-red-600">{loginError}</p>}
                                 <label className="label">
                                     <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
                                 </label>
-                            </div>
+      </div>
+
                             <div className="form-control mt-6">
-                               <button
+                               <button disabled={!!errors.confirmPassword}
               type='submit'
               className='bg-blue-900 w-full rounded-md py-3 text-white'
             >

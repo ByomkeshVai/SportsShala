@@ -1,4 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import 'daisyui/dist/full.css';
+
+
+.card{
+    margin: 0 auto !important;
+}
